@@ -1,0 +1,22 @@
+@import "src/assets/colors";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.input {
+  width: 480px;
+  height: 56px;
+  margin-bottom: 16px;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  margin-top: 40px;
+  width: 480px;
+  line-height: 56px;
+}

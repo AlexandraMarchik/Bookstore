@@ -1,0 +1,57 @@
+@import "src/assets/colors";
+
+.container {
+  background-color: $purple;
+  padding: 56px 64px;
+}
+.title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: $primary;
+}
+.text {
+  font-size: 18px;
+  line-height: 28px;
+  color: $secondary;
+}
+.inputContainer{
+  position: relative;
+  width: 992px;
+ }
+
+.inputSubscribe {
+  border-radius: 2px;
+  min-height: 56px;
+  min-width: 992px;
+  color: $primary;
+  border: none;
+  &::placeholder {
+    color: $secondary;
+  }
+
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+}
+.subscribeButton {
+  box-sizing: border-box;
+  width: 147px;
+  height: 56px;
+  background: $primary;
+  border-radius: 0px 2px 2px 0px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

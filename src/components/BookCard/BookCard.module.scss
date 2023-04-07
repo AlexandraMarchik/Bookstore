@@ -1,0 +1,61 @@
+@import "src/assets/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 352px;
+  height: 454px;
+}
+.imgContainer {
+  maw-width: 352px;
+  height: 265px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.imgOne {
+  background-color: $orange;
+}
+.imgTwo {
+  background-color: $blue;
+}
+.imgTree {
+  background-color: $green;
+}
+.imgFour {
+  background-color: $purple;
+}
+
+.img {
+  width: 190px;
+  height: 220px;
+}
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $primary;
+  min-height: 64px ;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: $secondary;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $primary;
+}

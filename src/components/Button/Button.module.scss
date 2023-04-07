@@ -1,0 +1,19 @@
+@import "src/assets/mixins";
+@import "src/assets/colors";
+
+.primaryButton {
+  @include button();
+  background-color: $primary;
+  color: $white;
+  &:hover {
+    background-color: $primary-secondary;
+  }
+}
+.disabledButton{
+  background-color: $secondary;
+  color: $white;
+  &:hover{
+    cursor: not-allowed;
+    background-color: $secondary;
+  }
+}

@@ -1,0 +1,19 @@
+@import "src/assets/colors";
+
+@mixin button{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+

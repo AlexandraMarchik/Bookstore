@@ -1,0 +1,38 @@
+@import "src/assets/colors";
+.container {
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  color: $primary;
+  margin-bottom: 8px;
+}
+.input {
+  width: 544px;
+  height: 56px;
+  border: $gray;
+  padding: 14px 20px;
+  box-sizing: border-box;
+  border: 1px solid $gray;
+  //border: 1px solid $red;
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 2px solid $gray;
+  }
+}
+
+.disabled {
+  background: $gray;
+  border: 1px solid $gray;
+  cursor: not-allowed;
+}
+
+.valid {
+  border: 2px solid $red;
+  border-radius: 2px;
+}
+.validText {
+  color: $red;
+}

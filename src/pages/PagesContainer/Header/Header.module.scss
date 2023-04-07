@@ -1,0 +1,35 @@
+@import "../../../assets/colors";
+
+.container {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+   width: 100%;
+  border-bottom: 2px solid $gray;
+}
+.searchInput {
+  position: relative;
+}
+.input {
+  min-height: 56px;
+  flex: 1;
+  min-width: 542px;
+  color: $primary;
+  &::placeholder {
+    color: $secondary;
+  }
+}
+.searchBtn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-45%);
+}
+.headerIcons {
+  display: flex;
+  cursor: pointer;
+  gap: 40px;
+}

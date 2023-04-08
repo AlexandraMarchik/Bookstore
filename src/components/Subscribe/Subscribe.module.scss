@@ -3,24 +3,27 @@
 .container {
   background-color: $purple;
   padding: 56px 64px;
+  margin-top: 72px;
 }
 .title {
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
   color: $primary;
+  margin-bottom: 15px;
 }
 .text {
   font-size: 18px;
   line-height: 28px;
   color: $secondary;
+  margin-bottom: 25px;
 }
 .inputContainer{
   position: relative;
   width: 992px;
  }
 
-.inputSubscribe {
+.input{
   border-radius: 2px;
   min-height: 56px;
   min-width: 992px;
@@ -29,7 +32,6 @@
   &::placeholder {
     color: $secondary;
   }
-
 }
 
 .buttonContainer {
@@ -40,7 +42,7 @@
   transform: translateY(-50%);
 
 }
-.subscribeButton {
+.button {
   box-sizing: border-box;
   width: 147px;
   height: 56px;

@@ -26,7 +26,6 @@ const BookCard: FC<CardProps> = ({ card, number }) => {
       </div>
             <div className={styles.title}>{title}</div>
         </div>
-
         <div className={styles.subtitle}>{subtitle}</div>
         <div className={styles.footer}>
           <div className={styles.price}>{price}</div>

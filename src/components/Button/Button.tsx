@@ -23,7 +23,7 @@ const Button: FC<ButtonProps> = ({ title, onClick, type, disabled,className }) =
     return (
         <div
             onClick={disabled ? undefined : onClick}
-            className={classNames(buttonClassName, className,{
+            className={classNames( className,buttonClassName,{
                 [styles.disabledButton]: disabled,
             })}
         >

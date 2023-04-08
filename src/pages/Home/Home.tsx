@@ -10,33 +10,15 @@ import {BooksSelectors, getAllBooks} from "src/redux/reducer/booksSlice";
 import Subscribe from "src/components/Subscribe";
 
 
-const TABS_LIST = [
-      {
-        title: "Description",
-        disabled: false,
-        key: TabsNames.Description,
-      },
-      {
-        title: "Reviews",
-        disabled: false,
-        key: TabsNames.Reviews,
-      },
-      {
-        title: "Authors",
-        disabled: false,
-        key: TabsNames.Authors,
-      },
-    ]
+
 
 const Home = () => {
   const dispatch= useDispatch()
 
-  const [activeTab, setActiveTab] = useState(TabsNames.Description);
+
   const booksList = useSelector(BooksSelectors.getAllBooks)
 
-  // const onTabClick = (key: TabsNames) => {
-  //   setActiveTab(key);
-  // };
+
   useEffect(() => {
   dispatch(getAllBooks());
 }, []);
@@ -44,7 +26,6 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Title title={"New Releases Books"} />
-      {/*<Tabs activeTab={activeTab} tabList={TABS_LIST} onClick={onTabClick}/>*/}
       <BookCardsList cardsList={booksList} />
         <Subscribe/>
     </div>

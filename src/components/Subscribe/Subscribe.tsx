@@ -23,14 +23,14 @@ const Subscribe = () => {
           type={"text"}
           onChange={onSubscribeClick}
           placeholder={"Your email"}
-          inputClassName={styles.inputSubscribe}
+          inputClassName={styles.input}
         />
         <div className={styles.buttonContainer}>
           <Button
             title={"Subscribe"}
-            type={ButtonType.Primary}
             onClick={() => {}}
-            className={styles.subscribeButton}
+            type={ButtonType.Primary}
+            className={styles.button}
           />
         </div>
       </div>

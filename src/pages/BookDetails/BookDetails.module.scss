@@ -1,0 +1,143 @@
+@import "src/assets/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.icon {
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+  padding-bottom: 37px;
+  &:hover {
+    svg > path{
+      cursor: pointer;
+      fill: $primary-secondary;
+    }
+  }
+}
+.bookInfoContainer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+.title{
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  color: $primary;
+  margin-bottom: 48px;
+}
+
+.bookContainer{
+  position: relative;
+  width: 472px;
+  height: 544px;
+  background-color: $purple;
+}
+.likeIcon{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width:56px ;
+  height: 56px;
+  display: flex;
+  align-items: center;
+justify-content: center;
+  background-color: $primary;
+  svg > path{
+    stroke: $white;
+  }
+ &:hover{
+   svg > path{
+     fill: $red;
+     stroke: $red;
+   }
+ }
+}
+.descriptionContainer{
+  width: 448px;
+  height: 472px;
+}
+.priceContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.price{
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: $primary;
+}
+.aboutBookContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.aboutBook{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: $secondary;
+}
+.button{
+  text-transform: none;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  color: $primary;
+  background-color: $white;
+  &:hover{
+    background-color: $white;
+    color: $secondary;
+  }
+}
+.buttonContainer{
+  position: relative;
+  &:hover{
+    svg > path{
+      stroke: $secondary;
+    }
+    color: $secondary;
+  }
+}
+.interfaceIcon{
+  position: absolute;
+  left: 115px;
+  top: 0px;
+  transform: translateY(30%);
+}
+.footer{
+  display: flex;
+  gap:24px;
+  margin-top: 48px;
+}
+.secondButton{
+  width: 448px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 59px;
+}
+.thirdButton{
+  background-color: $white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+  text-transform: none;
+  margin-top: 40px;
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: $white;
+  }
+}

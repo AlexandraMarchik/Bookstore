@@ -8,12 +8,13 @@ import {
 import Home from "src/pages/Home";
 import PagesContainer from "src/pages/PagesContainer";
 import RegistrationPage from "src/pages/FormContainer/RegistrationPage";
+import BookDetails from "src/pages/BookDetails";
 
 
 
 export enum RoutesList {
   Home = "/",
-  // SinglePost = "/blog/:id",
+  SinglePost = "/blog/:isbn13",
   // Search = "/blog/search",
   // AddPost = "/blog/add",
   SignIn = "/sign-in",
@@ -31,10 +32,10 @@ const Router = () => {
       <Routes>
         <Route path={RoutesList.Home} element={<PagesContainer />}>
           <Route path={RoutesList.Home} element={<Home />} />
-          {/*<Route*/}
-          {/*  path={RoutesList.SinglePost}*/}
-          {/*  element={<PostPage/>}*/}
-          {/*/>*/}
+          <Route
+            path={RoutesList.SinglePost}
+            element={<BookDetails/>}
+          />
           <Route path={RoutesList.SignIn} element={<RegistrationPage />} />
           {/*<Route path={RoutesList.Success} element={<Success />} />*/}
           {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}

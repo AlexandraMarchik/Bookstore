@@ -1,15 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
-import {BookForm, CardProps} from "src/components/BookCard/types";
-import { useDispatch, useSelector } from "react-redux";
+import { BookForm, CardProps } from "src/components/BookCard/types";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./BookCard.module.scss";
 import classNames from "classnames";
 import { LikeIcon } from "src/assets/icon";
-import {
-  BooksSelectors,
-  setFavoritesBooks,
-} from "src/redux/reducer/booksSlice";
+import { setFavouritesBooks } from "src/redux/reducer/booksSlice";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13 } = card;
@@ -17,19 +14,14 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const dispatch = useDispatch();
 
   const [color, setColor] = useState("");
-  const singleBook = useSelector(BooksSelectors.getSingleBook);
-  const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
-  const favoritesIndex = favouritesList.findIndex(
-    (books) => books.isbn13 === singleBook?.isbn13
-  );
 
   const colors = ["#D7E4FD", "#CAEFF0", "#FEE9E2", "#F4EEFD"];
-  const isFavorites = form === BookForm.Favorite
+  const isFavourites = form === BookForm.Favourite;
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   const onLikeIconClick = () => {
-    if (singleBook) {
-      dispatch(setFavoritesBooks(singleBook));
+    if (card) {
+      dispatch(setFavouritesBooks(card));
     }
   };
   const onTitleClick = () => {
@@ -42,12 +34,12 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   return (
     <div
       className={classNames(styles.container, {
-        [styles.favoritesContainer]: isFavorites,
+        [styles.favouritesContainer]: isFavourites,
       })}
     >
       <div
         className={classNames(styles.rightContainer, {
-          [styles.rightFavoritesContainer]: isFavorites,
+          [styles.rightFavouritesContainer]: isFavourites,
         })}
       >
         <div
@@ -55,24 +47,24 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             backgroundColor: color,
           }}
           className={classNames(styles.imgContainer, {
-            [styles.imgFifth]: isFavorites,
+            [styles.imgFifth]: isFavourites,
           })}
         >
           <img
             src={image}
             className={classNames(styles.img, {
-              [styles.imgFavorites]: isFavorites,
+              [styles.imgFavourites]: isFavourites,
             })}
           ></img>
         </div>
         <div
           className={classNames(styles.textContainer, {
-            [styles.favoritesTextContainer]: isFavorites,
+            [styles.favouritesTextContainer]: isFavourites,
           })}
         >
           <div
             className={classNames(styles.title, {
-              [styles.favoritesTitle]: isFavorites,
+              [styles.favouritesTitle]: isFavourites,
             })}
             onClick={onTitleClick}
           >
@@ -81,7 +73,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
           <div className={styles.subtitle}>{subtitle}</div>
           <div
             className={classNames(styles.footer, {
-              [styles.favoritesFooter]: isFavorites,
+              [styles.favouritesFooter]: isFavourites,
             })}
           >
             <div className={styles.price}>{price}</div>
@@ -89,7 +81,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
           </div>
         </div>
       </div>
-      {isFavorites && (
+      {isFavourites && (
         <div className={styles.likeIcon} onClick={onLikeIconClick}>
           <LikeIcon />
         </div>

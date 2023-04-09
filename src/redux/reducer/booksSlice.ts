@@ -7,13 +7,13 @@ import { SingleBooksResponse } from "src/redux/sagas/@types";
 type InitialType = {
   booksList: BookCardType[];
   singleBook: SingleBooksResponse | null;
-  favoritesBooks: BookCardType[],
+  favouritesBooks: BookCardType[],
 };
 
 const initialState: InitialType = {
   booksList: [],
   singleBook: null,
-  favoritesBooks: [],
+  favouritesBooks: [],
 };
 
 const booksSlice = createSlice({
@@ -28,25 +28,25 @@ const booksSlice = createSlice({
     setSingleBook: (state, action: PayloadAction<SingleBooksResponse  | null>) => {
       state.singleBook = action.payload;
     },
-    setFavoritesBooks: (state, action: PayloadAction<SingleBooksResponse>) => {
-      const favoritesIndex = state.favoritesBooks.findIndex(
+    setFavouritesBooks: (state, action: PayloadAction<BookCardType>) => {
+      const favoritesIndex = state.favouritesBooks.findIndex(
           (books) => books.isbn13 === action.payload.isbn13
       );
       if (favoritesIndex === -1) {
-        state.favoritesBooks.push(action.payload);
+        state.favouritesBooks.push(action.payload);
       } else {
-        state.favoritesBooks.splice(favoritesIndex, 1);
+        state.favouritesBooks.splice(favoritesIndex, 1);
       }
     },
   },
 });
 
-export const { getAllBooks, setAllBooks,setSingleBook, getSingleBook,setFavoritesBooks } = booksSlice.actions;
+export const { getAllBooks, setAllBooks,setSingleBook, getSingleBook,setFavouritesBooks } = booksSlice.actions;
 
 export default booksSlice.reducer;
 
 export const BooksSelectors = {
   getAllBooks: (state: RootState) => state.books.booksList,
   getSingleBook: (state: RootState) => state.books.singleBook,
-  getFavoritesBooks: (state: RootState) => state.books.favoritesBooks,
+  getFavoritesBooks: (state: RootState) => state.books.favouritesBooks,
 };

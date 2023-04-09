@@ -4,7 +4,7 @@
   width: 352px;
   height: 454px;
 }
-.favoritesContainer {
+.favouritesContainer {
   width: 100%;
   height: 242px;
   border-bottom: 1px solid $gray;
@@ -12,7 +12,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .imgContainer {
   max-width: 352px;
   height: 265px;
@@ -22,7 +21,7 @@
   margin-bottom: 10px;
 }
 
-.rightFavoritesContainer {
+.rightFavouritesContainer {
   display: flex;
   flex-direction: row;
   gap: 32px;
@@ -37,7 +36,7 @@
   width: 190px;
   height: 220px;
 }
-.imgFavorites {
+.imgFavourites {
   width: 160px;
   height: 192px;
 }
@@ -46,7 +45,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.favoritesTextContainer {
+.favouritesTextContainer {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -63,7 +62,7 @@
     cursor: pointer;
   }
 }
-.favoritesTitle {
+.favouritesTitle {
   min-height: 0px;
   margin-bottom: 8px;
 }

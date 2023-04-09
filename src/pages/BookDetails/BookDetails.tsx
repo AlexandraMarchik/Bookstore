@@ -20,7 +20,7 @@ import Subscribe from "src/components/Subscribe";
 import {
   BooksSelectors,
   getSingleBook,
-  setFavoritesBooks,
+  setFavouritesBooks,
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 
@@ -58,7 +58,7 @@ const BookDetails = () => {
   );
   const onLikeIconClick = () => {
     if (singleBook) {
-      dispatch(setFavoritesBooks(singleBook));
+      dispatch(setFavouritesBooks(singleBook));
     }
   };
   const onTabClick = (key: TabsNames) => {
@@ -114,7 +114,7 @@ const BookDetails = () => {
                 <div className={styles.aboutBookContainer}>
                   <div className={styles.aboutBook}>{"isbn13"}</div>
                   <div className={styles.aboutBookInfo}>
-                    {singleBook?.isbn13}{" "}
+                    {singleBook?.isbn13}
                   </div>
                 </div>
                 <div className={styles.aboutBookContainer}>

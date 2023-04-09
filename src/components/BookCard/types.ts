@@ -8,7 +8,7 @@ export type BookCardType = {
 };
 
 export enum BookForm {
-  Favorite,
+  Favourite,
 }
 export type CardProps = {
   card: BookCardType;

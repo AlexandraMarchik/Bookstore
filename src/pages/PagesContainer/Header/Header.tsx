@@ -1,28 +1,26 @@
 import React, { useState, KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import styles from "./Header.module.scss";
 import Input from "src/components/Input";
 import {
   CartIcon,
+  LikeFavoritesIcon,
   LikeIcon,
   LogoIcon,
   SearchIcon,
   UserIcon,
 } from "src/assets/icon";
 import { RoutesList } from "src/pages/Router";
-import {useSelector} from "react-redux";
-import {BooksSelectors} from "src/redux/reducer/booksSlice";
+import { BooksSelectors } from "src/redux/reducer/booksSlice";
 
 const Header = () => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState("");
-  const singleBook = useSelector(BooksSelectors.getSingleBook);
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
-  const favoritesIndex = favouritesList.findIndex(
-      (books) => books.isbn13 === singleBook?.isbn13
-  );
+  const favoritesIndex = favouritesList.find((books) => books.isbn13);
 
   // поиск из строки search при нажатии на enter
   // const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -30,6 +28,7 @@ const Header = () => {
   //     onClickSearchButton();
   //   }
   // };
+
   const onSearchValue = (value: string) => {
     setSearchValue(value);
   };
@@ -61,7 +60,7 @@ const Header = () => {
         </div>
         <div className={styles.headerIcons}>
           <div onClick={onLikeIconClick} className={styles.likeIcon}>
-             <LikeIcon/>
+            {favoritesIndex ? <LikeFavoritesIcon /> : <LikeIcon />}
           </div>
           <div>
             <CartIcon />

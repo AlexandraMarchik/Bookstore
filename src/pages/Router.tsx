@@ -8,7 +8,7 @@ import Home from "src/pages/Home";
 import PagesContainer from "src/pages/PagesContainer";
 import RegistrationPage from "src/pages/FormContainer/RegistrationPage";
 import BookDetails from "src/pages/BookDetails";
-import Favorites from "src/pages/Favorites";
+import Favorites from "src/pages/Favourites";
 
 
 

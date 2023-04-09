@@ -4,12 +4,12 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 import API from "../api";
 
 import {AllBooksResponse, SingleBooksResponse} from "./@types";
-import {getAllBooks, getSingleBook, setAllBooks, setSingleBook} from "src/redux/reducer/booksSlice";
+import {getAllBooks, getSingleBook, setAllBooks, setAllBooksLoading, setSingleBook} from "src/redux/reducer/booksSlice";
 import {PayloadAction} from "@reduxjs/toolkit";
 
 
 function* getAllBooksWorker() {
-
+  yield put(setAllBooksLoading(true));
   const { ok, data, problem }: ApiResponse<AllBooksResponse> = yield call(
     API.getBooks
   );
@@ -18,6 +18,7 @@ function* getAllBooksWorker() {
   } else {
     console.warn("Error getting all books", problem);
   }
+  yield put(setAllBooksLoading(false));
 }
 
 function* getSinglePostWorker(action: PayloadAction<string>) {

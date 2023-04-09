@@ -8,12 +8,14 @@ type InitialType = {
   booksList: BookCardType[];
   singleBook: SingleBooksResponse | null;
   favouritesBooks: BookCardType[],
+  isAllBooksLoading: boolean,
 };
 
 const initialState: InitialType = {
   booksList: [],
   singleBook: null,
   favouritesBooks: [],
+  isAllBooksLoading: false,
 };
 
 const booksSlice = createSlice({
@@ -38,10 +40,13 @@ const booksSlice = createSlice({
         state.favouritesBooks.splice(favoritesIndex, 1);
       }
     },
+    setAllBooksLoading: (state, action: PayloadAction<boolean>) => {
+      state.isAllBooksLoading = action.payload
+    },
   },
 });
 
-export const { getAllBooks, setAllBooks,setSingleBook, getSingleBook,setFavouritesBooks } = booksSlice.actions;
+export const { getAllBooks, setAllBooks,setSingleBook, getSingleBook,setFavouritesBooks,setAllBooksLoading } = booksSlice.actions;
 
 export default booksSlice.reducer;
 
@@ -49,4 +54,5 @@ export const BooksSelectors = {
   getAllBooks: (state: RootState) => state.books.booksList,
   getSingleBook: (state: RootState) => state.books.singleBook,
   getFavoritesBooks: (state: RootState) => state.books.favouritesBooks,
+  getAllBooksLoading: (state: RootState) => state.books.isAllBooksLoading,
 };

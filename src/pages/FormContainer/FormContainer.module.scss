@@ -1,0 +1,14 @@
+@import "src/assets/colors";
+
+.icon {
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+  padding-bottom: 37px;
+  &:hover {
+    svg > path{
+      cursor: pointer;
+      fill: $gray;
+    }
+  }
+}

@@ -33,3 +33,9 @@
   cursor: pointer;
   gap: 40px;
 }
+.logo{
+  &:hover{
+    cursor: pointer;
+  }
+}
+

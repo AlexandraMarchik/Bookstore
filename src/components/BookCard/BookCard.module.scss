@@ -1,19 +1,31 @@
 @import "src/assets/colors";
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 352px;
   height: 454px;
 }
+.favoritesContainer {
+  width: 100%;
+  height: 242px;
+  border-bottom: 1px solid $gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .imgContainer {
-  maw-width: 352px;
+  max-width: 352px;
   height: 265px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.rightFavoritesContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
 }
 .imgOne {
   background-color: $orange;
@@ -27,26 +39,52 @@
 .imgFour {
   background-color: $purple;
 }
+.imgFifth {
+  width: 192px;
+  height: 164px;
+  background-color: $blue;
+}
 
 .img {
   width: 190px;
   height: 220px;
+}
+.imgFavorites {
+  width: 160px;
+  height: 192px;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.favoritesTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
 }
 .title {
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
   color: $primary;
-  min-height: 64px ;
+  min-height: 82px;
+
   &:hover {
     cursor: pointer;
   }
+}
+.favoritesTitle {
+  min-height: 0px;
+  margin-bottom: 8px;
 }
 .subtitle {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: $secondary;
+  min-height: 56px;
 }
 .footer {
   display: flex;
@@ -58,4 +96,10 @@
   font-size: 24px;
   line-height: 32px;
   color: $primary;
+}
+.likeIcon {
+    svg > path {
+      stroke: $red;
+      fill: $red;
+    }
 }

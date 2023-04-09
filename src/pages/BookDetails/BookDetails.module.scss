@@ -4,85 +4,85 @@
   display: flex;
   flex-direction: column;
 }
-.icon {
-  display: flex;
-  align-items: start;
-  cursor: pointer;
-  padding-bottom: 37px;
-  &:hover {
-    svg > path{
-      cursor: pointer;
-      fill: $primary-secondary;
-    }
-  }
-}
-.bookInfoContainer{
+
+.bookInfoContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 72px;
 }
-.title{
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 64px;
-  color: $primary;
-  margin-bottom: 48px;
-}
 
-.bookContainer{
+.bookContainer {
   position: relative;
   width: 472px;
   height: 544px;
   background-color: $purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.likeIcon{
+.likeIcon {
   position: absolute;
   right: 0px;
   top: 0px;
-  width:56px ;
+  width: 56px;
   height: 56px;
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   background-color: $primary;
-  svg > path{
+  cursor: pointer;
+  svg > path {
     stroke: $white;
   }
- &:hover{
-   svg > path{
-     fill: $red;
-     stroke: $red;
-   }
- }
+  &:hover {
+    svg > path {
+      fill: $red;
+      stroke: $red;
+    }
+  }
 }
-.descriptionContainer{
-  width: 448px;
+.activeLikeIcon{
+  svg > path {
+    fill: $red;
+    stroke: $red;
+  }
+}
+.descriptionContainer {
+  max-width: 448px;
   height: 472px;
+  display: flex;
+  justify-content: space-between;
 }
-.priceContainer{
+.priceContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
 }
-.price{
+.price {
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
   color: $primary;
 }
-.aboutBookContainer{
+.aboutBookContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.aboutBook{
+.aboutBook {
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
   color: $secondary;
 }
-.button{
+.aboutBookInfo{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  width: 40%;
+}
+.button {
   text-transform: none;
   font-size: 16px;
   line-height: 24px;
@@ -91,32 +91,32 @@ justify-content: center;
   font-weight: 400;
   color: $primary;
   background-color: $white;
-  &:hover{
+  &:hover {
     background-color: $white;
     color: $secondary;
   }
 }
-.buttonContainer{
+.buttonContainer {
   position: relative;
-  &:hover{
-    svg > path{
+  &:hover {
+    svg > path {
       stroke: $secondary;
     }
     color: $secondary;
   }
 }
-.interfaceIcon{
+.interfaceIcon {
   position: absolute;
   left: 115px;
   top: 0px;
   transform: translateY(30%);
 }
-.footer{
+.footer {
   display: flex;
-  gap:24px;
+  gap: 24px;
   margin-top: 48px;
 }
-.secondButton{
+.secondButton {
   width: 448px;
   height: 56px;
   display: flex;
@@ -124,7 +124,7 @@ justify-content: center;
   justify-content: center;
   margin-top: 59px;
 }
-.thirdButton{
+.thirdButton {
   background-color: $white;
   font-weight: 400;
   font-size: 16px;
@@ -135,7 +135,7 @@ justify-content: center;
   color: $primary;
   text-transform: none;
   margin-top: 40px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     text-decoration: underline;
     background-color: $white;

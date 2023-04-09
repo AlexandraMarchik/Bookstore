@@ -1,5 +1,4 @@
 export type BookCardType = {
-  id: number;
   title: string;
   subtitle: string;
   isbn13: string;
@@ -13,9 +12,11 @@ export enum CardNumbers {
   Second,
   Third,
   Fourth,
+  Fifth,
 
 }
 export type CardProps = {
   card: BookCardType;
   number?: CardNumbers;
+  className?: string;
 };

@@ -1,5 +1,3 @@
-import { InterfaceSecondIcon } from "src/assets/icon/InterfaceIcon2";
-
 export { NoContentIcon } from "./NoContentIcon";
 export { SearchIcon } from "./SearchIcon";
 export { LikeIcon } from "./LikeIcon";
@@ -12,3 +10,5 @@ export { TwitterIcon } from "./TwitterIcon";
 export { MoreIcon } from "./MoreIcon";
 export { InterfaceIcon } from "./InterfaceIcon";
 export { InterfaceSecondIcon } from './InterfaceIcon2'
+export {LikeFavoritesIcon} from './LikeFavoritesIcon'
+

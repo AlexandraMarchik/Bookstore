@@ -3,21 +3,21 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import Home from "src/pages/Home";
 import PagesContainer from "src/pages/PagesContainer";
 import RegistrationPage from "src/pages/FormContainer/RegistrationPage";
 import BookDetails from "src/pages/BookDetails";
+import Favorites from "src/pages/Favorites";
 
 
 
 export enum RoutesList {
   Home = "/",
-  SinglePost = "/blog/:isbn13",
-  // Search = "/blog/search",
-  // AddPost = "/blog/add",
+  SinglePost = "/books/:isbn13",
+  Favorites ='/favorites',
   SignIn = "/sign-in",
+  // Search = "/blog/search",
   // SignUp = "/sign-up",
   // Confirm = "activate/:uid/:token",
   // Success = "/sign-up/success",
@@ -37,6 +37,7 @@ const Router = () => {
             element={<BookDetails/>}
           />
           <Route path={RoutesList.SignIn} element={<RegistrationPage />} />
+          <Route path={RoutesList.Favorites} element={<Favorites />} />
           {/*<Route path={RoutesList.Success} element={<Success />} />*/}
           {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}
           {/*<Route path={RoutesList.Confirm} element={<Confirm />} />*/}

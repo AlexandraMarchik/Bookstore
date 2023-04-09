@@ -24,7 +24,6 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 
-
 const TABS_LIST = [
   {
     title: "Description",
@@ -47,6 +46,7 @@ const BookDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { isbn13 } = params;
+
 
   const singleBook = useSelector(BooksSelectors.getSingleBook);
 

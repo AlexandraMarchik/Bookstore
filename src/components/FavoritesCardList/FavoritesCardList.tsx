@@ -2,7 +2,7 @@ import React, {FC} from "react";
 
 import styles from './FavoritesCardList.module.scss'
 import EmptyState from "src/components/EmptyState";
-import {BookCardType, CardNumbers} from "src/components/BookCard/types";
+import {BookCardType, BookForm} from "src/components/BookCard/types";
 import BookCard from "src/components/BookCard";
 
 
@@ -12,12 +12,10 @@ type FavoritesCardListProps = {
 const SearchCardList: FC<FavoritesCardListProps> = ({ booksList }) => {
     return booksList.length > 0 ? (
         <div className={styles.container}>
-
             {booksList.map((item, index) => {
-                return <BookCard card={item} number={CardNumbers.Fifth} key={item.isbn13}/>
+                return <BookCard card={item} form={BookForm.Favorite} key={item.isbn13}/>
 
             })}
-
         </div>
     ) : (
         <EmptyState

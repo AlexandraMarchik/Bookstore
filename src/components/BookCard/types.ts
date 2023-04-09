@@ -7,16 +7,11 @@ export type BookCardType = {
   url: string;
 };
 
-export enum CardNumbers {
-  First,
-  Second,
-  Third,
-  Fourth,
-  Fifth,
-
+export enum BookForm {
+  Favorite,
 }
 export type CardProps = {
   card: BookCardType;
-  number?: CardNumbers;
+  form?:BookForm;
   className?: string;
 };

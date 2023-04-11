@@ -10,6 +10,7 @@ import {
   InterfaceSecondIcon,
   LikeIcon,
   MoreIcon,
+  StarIcon,
   TwitterIcon,
 } from "src/assets/icon";
 import Button from "src/components/Button";
@@ -21,8 +22,13 @@ import {
   BooksSelectors,
   getSingleBook,
   setFavouritesBooks,
+  setPreviewBook,
+  setPreviewBookVisibility,
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
+import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
+import StarRating from "src/components/StarRating";
+import { Rating } from "react-simple-star-rating";
 
 const TABS_LIST = [
   {
@@ -47,7 +53,6 @@ const BookDetails = () => {
   const params = useParams();
   const { isbn13 } = params;
 
-
   const singleBook = useSelector(BooksSelectors.getSingleBook);
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
@@ -56,6 +61,7 @@ const BookDetails = () => {
   const favoritesIndex = favouritesList.findIndex(
     (books) => books.isbn13 === singleBook?.isbn13
   );
+
   const onLikeIconClick = () => {
     if (singleBook) {
       dispatch(setFavouritesBooks(singleBook));
@@ -66,6 +72,10 @@ const BookDetails = () => {
   };
   const onShowMoreDetailsButtonClick = () => {
     return setShowDetails(!showDetails);
+  };
+  const onClickPreview = () => {
+      dispatch(setPreviewBook(null));
+      dispatch(setPreviewBookVisibility(true));
   };
 
   useEffect(() => {
@@ -93,7 +103,15 @@ const BookDetails = () => {
           <div className={styles.descriptionInfoContainer}>
             <div className={styles.priceContainer}>
               <div className={styles.price}>{singleBook?.price}</div>
-              <div className={styles.rating}>{singleBook?.rating}</div>
+              <div className={styles.rating}>
+                <Rating
+                  readonly={true}
+                  initialValue={singleBook?.rating}
+                  SVGclassName={styles.icon}
+                  fillColor={"#313037"}
+                  emptyColor={"#E7E7E7"}
+                />
+              </div>
             </div>
             <div className={styles.aboutBookContainer}>
               <div className={styles.aboutBook}>{"Authors"}</div>
@@ -151,7 +169,7 @@ const BookDetails = () => {
             <Button
               type={ButtonType.Primary}
               title={"Preview book"}
-              onClick={() => {}}
+              onClick={onClickPreview}
               className={styles.thirdButton}
             />
           </div>
@@ -181,6 +199,7 @@ const BookDetails = () => {
         </div>
       </div>
       <Subscribe />
+      <PreviewBookModal />
     </div>
   );
 };

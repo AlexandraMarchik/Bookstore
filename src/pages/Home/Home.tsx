@@ -1,12 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
+import styles from "./Home.module.scss";
 import Title from "../../components/Title";
 import BookCardsList from "../../components/BookCardsList";
-import styles from "./Home.module.scss";
-import Tabs from "src/components/Tabs";
-import { TabsNames } from "src/utils/@globalTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
 import Subscribe from "src/components/Subscribe";
 import Loader from "src/components/Loader";
 

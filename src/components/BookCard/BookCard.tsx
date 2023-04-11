@@ -8,8 +8,9 @@ import classNames from "classnames";
 import { LikeIcon } from "src/assets/icon";
 import { setFavouritesBooks } from "src/redux/reducer/booksSlice";
 
+
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
-  const { image, title, subtitle, price, isbn13 } = card;
+  const { image, title, subtitle, price, isbn13, } = card;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

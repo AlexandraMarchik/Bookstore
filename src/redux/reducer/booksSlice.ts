@@ -4,11 +4,14 @@ import { RootState } from "../store";
 import { BookCardType } from "src/components/BookCard/types";
 import { SingleBooksResponse } from "src/redux/sagas/@types";
 
+
 type InitialType = {
   booksList: BookCardType[];
   singleBook: SingleBooksResponse | null;
-  favouritesBooks: BookCardType[],
-  isAllBooksLoading: boolean,
+  favouritesBooks: BookCardType[];
+  isAllBooksLoading: boolean;
+  isVisibleModal: boolean;
+  previewBook:SingleBooksResponse | null;
 };
 
 const initialState: InitialType = {
@@ -16,7 +19,9 @@ const initialState: InitialType = {
   singleBook: null,
   favouritesBooks: [],
   isAllBooksLoading: false,
-};
+  previewBook:null,
+  isVisibleModal: false,
+ };
 
 const booksSlice = createSlice({
   name: "books",
@@ -26,13 +31,16 @@ const booksSlice = createSlice({
     setAllBooks: (state, action: PayloadAction<BookCardType[]>) => {
       state.booksList = action.payload;
     },
-    getSingleBook:(state, action:PayloadAction<string>)=>{},
-    setSingleBook: (state, action: PayloadAction<SingleBooksResponse  | null>) => {
+    getSingleBook: (state, action: PayloadAction<string>) => {},
+    setSingleBook: (
+      state,
+      action: PayloadAction<SingleBooksResponse | null>
+    ) => {
       state.singleBook = action.payload;
     },
     setFavouritesBooks: (state, action: PayloadAction<BookCardType>) => {
       const favoritesIndex = state.favouritesBooks.findIndex(
-          (books) => books.isbn13 === action.payload.isbn13
+        (books) => books.isbn13 === action.payload.isbn13
       );
       if (favoritesIndex === -1) {
         state.favouritesBooks.push(action.payload);
@@ -41,12 +49,28 @@ const booksSlice = createSlice({
       }
     },
     setAllBooksLoading: (state, action: PayloadAction<boolean>) => {
-      state.isAllBooksLoading = action.payload
+      state.isAllBooksLoading = action.payload;
+    },
+
+    setPreviewBook: (state, action: PayloadAction<SingleBooksResponse | null>) => {
+      state.previewBook = action.payload;
+    },
+    setPreviewBookVisibility: (state, action: PayloadAction<boolean>) => {
+      state.isVisibleModal = action.payload;
     },
   },
 });
 
-export const { getAllBooks, setAllBooks,setSingleBook, getSingleBook,setFavouritesBooks,setAllBooksLoading } = booksSlice.actions;
+export const {
+  getAllBooks,
+  setAllBooks,
+  setSingleBook,
+  getSingleBook,
+  setFavouritesBooks,
+  setAllBooksLoading,
+  setPreviewBookVisibility,
+    setPreviewBook
+} = booksSlice.actions;
 
 export default booksSlice.reducer;
 
@@ -55,4 +79,6 @@ export const BooksSelectors = {
   getSingleBook: (state: RootState) => state.books.singleBook,
   getFavoritesBooks: (state: RootState) => state.books.favouritesBooks,
   getAllBooksLoading: (state: RootState) => state.books.isAllBooksLoading,
+  getVisibleModal: (state: RootState) => state.books.isVisibleModal,
+  getPreviewBook:(state: RootState) => state.books.previewBook,
 };

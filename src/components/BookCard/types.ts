@@ -9,6 +9,7 @@ export type BookCardType = {
 
 export enum BookForm {
   Favourite,
+  Cart
 }
 export type CardProps = {
   card: BookCardType;

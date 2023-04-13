@@ -5,11 +5,10 @@ import EmptyState from "src/components/EmptyState";
 import { BookCardType, BookForm } from "src/components/BookCard/types";
 import BookCard from "src/components/BookCard";
 
-
 type FavouritesCardListProps = {
   booksList: BookCardType[];
 };
-const SearchCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
+const FavouritesCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
   return booksList.length > 0 ? (
     <div className={styles.container}>
       {booksList.map((item, index) => {
@@ -25,4 +24,4 @@ const SearchCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
     />
   );
 };
-export default SearchCardList;
+export default FavouritesCardList;

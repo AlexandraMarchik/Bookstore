@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Rating } from "react-simple-star-rating";
 import classNames from "classnames";
 
 import styles from "./BookDetails.module.scss";
@@ -10,7 +11,6 @@ import {
   InterfaceSecondIcon,
   LikeIcon,
   MoreIcon,
-  StarIcon,
   TwitterIcon,
 } from "src/assets/icon";
 import Button from "src/components/Button";
@@ -27,8 +27,8 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
-import StarRating from "src/components/StarRating";
-import { Rating } from "react-simple-star-rating";
+import {setCartList} from "src/redux/reducer/cartSlice";
+
 
 const TABS_LIST = [
   {
@@ -54,13 +54,15 @@ const BookDetails = () => {
   const { isbn13 } = params;
 
   const singleBook = useSelector(BooksSelectors.getSingleBook);
+  const pdfFile = !!singleBook?.pdf ? Object.values(singleBook?.pdf)[0] : null;
+  const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
+  const favoritesIndex = favouritesList.findIndex(
+      (books) => books.isbn13 === singleBook?.isbn13
+  );
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
   const [showDetails, setShowDetails] = useState(false);
-  const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
-  const favoritesIndex = favouritesList.findIndex(
-    (books) => books.isbn13 === singleBook?.isbn13
-  );
+
 
   const onLikeIconClick = () => {
     if (singleBook) {
@@ -74,8 +76,15 @@ const BookDetails = () => {
     return setShowDetails(!showDetails);
   };
   const onClickPreview = () => {
-      dispatch(setPreviewBook(null));
+    if (pdfFile) {
+      dispatch(setPreviewBook(pdfFile));
       dispatch(setPreviewBookVisibility(true));
+    }
+  };
+    const onClickAddToCart = () => {
+    if (singleBook) {
+      dispatch(setCartList(singleBook));
+    }
   };
 
   useEffect(() => {
@@ -137,9 +146,7 @@ const BookDetails = () => {
                 </div>
                 <div className={styles.aboutBookContainer}>
                   <div className={styles.aboutBook}>{"Year"}</div>
-                  <div className={styles.aboutBookInfo}>
-                    {singleBook?.year}{" "}
-                  </div>
+                  <div className={styles.aboutBookInfo}>{singleBook?.year}</div>
                 </div>
                 <div className={styles.aboutBookContainer}>
                   <div className={styles.aboutBook}>{"isbn10"}</div>
@@ -163,15 +170,17 @@ const BookDetails = () => {
             <Button
               type={ButtonType.Primary}
               title={"add to cart"}
-              onClick={() => {}}
+              onClick={onClickAddToCart}
               className={styles.secondButton}
             />
-            <Button
-              type={ButtonType.Primary}
-              title={"Preview book"}
-              onClick={onClickPreview}
-              className={styles.thirdButton}
-            />
+            {pdfFile && (
+              <Button
+                type={ButtonType.Primary}
+                title={"Preview book"}
+                onClick={onClickPreview}
+                className={styles.thirdButton}
+              />
+            )}
           </div>
         </div>
       </div>

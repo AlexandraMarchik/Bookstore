@@ -1,10 +1,12 @@
-import React, { useState, KeyboardEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, {useState, KeyboardEvent} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RoutesList } from "src/pages/Router";
 
 import styles from "./Header.module.scss";
 import Input from "src/components/Input";
 import {
+  CartAddIcon,
   CartIcon,
   LikeFavoritesIcon,
   LikeIcon,
@@ -12,31 +14,45 @@ import {
   SearchIcon,
   UserIcon,
 } from "src/assets/icon";
-import { RoutesList } from "src/pages/Router";
-import { BooksSelectors } from "src/redux/reducer/booksSlice";
+import {
+  BooksSelectors,
+  getSearchBooks,
+} from "src/redux/reducer/booksSlice";
+import {CartSelectors} from "src/redux/reducer/cartSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState("");
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.find((books) => books.isbn13);
+  const cartList = useSelector(CartSelectors.getCartList);
+  const cartIndex = cartList.find((books) => books.isbn13);
 
   // поиск из строки search при нажатии на enter
-  // const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === "Enter") {
-  //     onClickSearchButton();
-  //   }
-  // };
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      onClickSearchButton();
+    }
+  };
 
   const onSearchValue = (value: string) => {
     setSearchValue(value);
-  };
+    };
   const onLikeIconClick = () => {
     navigate(RoutesList.Favorites);
   };
   const onLogoButtonClick = () => {
     navigate(RoutesList.Home);
+  };
+  const onCartIconClick = () => {
+    navigate(RoutesList.Cart);
+  };
+  const onClickSearchButton = () => {
+    dispatch(getSearchBooks(searchValue));
+    navigate(RoutesList.Search);
+    navigate(`/search/${searchValue}`)
   };
 
   return (
@@ -52,9 +68,9 @@ const Header = () => {
             inputClassName={styles.input}
             placeholder="Search..."
             type={"text"}
-            // onKeyDown={onKeyDown}
+            onKeyDown={onKeyDown}
           />
-          <div className={styles.searchBtn}>
+          <div className={styles.searchBtn} onClick={onClickSearchButton}>
             <SearchIcon />
           </div>
         </div>
@@ -62,8 +78,8 @@ const Header = () => {
           <div onClick={onLikeIconClick} className={styles.likeIcon}>
             {favoritesIndex ? <LikeFavoritesIcon /> : <LikeIcon />}
           </div>
-          <div>
-            <CartIcon />
+          <div onClick={onCartIconClick}>
+            {cartIndex ? <CartAddIcon /> : <CartIcon />}
           </div>
           <div>
             <UserIcon />

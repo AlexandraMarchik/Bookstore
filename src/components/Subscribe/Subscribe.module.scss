@@ -34,7 +34,7 @@
   }
 }
 
-.buttonContainer {
+.button {
   position: absolute;
   right: 0px;
   top: 50%;
@@ -42,7 +42,7 @@
   transform: translateY(-50%);
 
 }
-.button {
+.buttonContainer {
   box-sizing: border-box;
   width: 147px;
   height: 56px;

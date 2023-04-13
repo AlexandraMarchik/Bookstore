@@ -8,7 +8,7 @@ type InputProps = {
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
   onChange: (value: string) => void;
   title?: string;
-  placeholder: string;
+  placeholder?: string;
   disabled?: boolean;
   errorText?: string;
   type: string;
@@ -35,14 +35,14 @@ const Input: FC<InputProps> = ({
       <input
         type={type}
         value={value}
-        className={classNames(styles.input, inputClassName, {
-          [styles.disabled]: disabled,
-          [styles.valid]: errorText,
-        })}
         placeholder={placeholder}
         onChange={onChangeText}
         disabled={disabled}
         onKeyDown={onKeyDown}
+        className={classNames(styles.input,inputClassName,{
+          [styles.disabled]: disabled,
+          [styles.valid]: errorText,
+        })}
       />
       {errorText && <div className={styles.validText}>{errorText}</div>}
     </div>

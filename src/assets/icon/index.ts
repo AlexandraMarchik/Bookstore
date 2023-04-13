@@ -1,5 +1,3 @@
-import { CloseIconModal } from "src/assets/icon/CloseIconModal";
-
 export { NoContentIcon } from "./NoContentIcon";
 export { SearchIcon } from "./SearchIcon";
 export { LikeIcon } from "./LikeIcon";
@@ -13,5 +11,7 @@ export { MoreIcon } from "./MoreIcon";
 export { InterfaceIcon } from "./InterfaceIcon";
 export { InterfaceSecondIcon } from "./InterfaceIcon2";
 export { LikeFavoritesIcon } from "./LikeFavoritesIcon";
-export { CloseIconModal } from './CloseIconModal';
-export {StarIcon } from './StarIcon'
+export { CloseIconModal } from "./CloseIconModal";
+export { CartAddIcon } from './CartAddIcon';
+export {PlusIcon} from './PlusIcon'
+export {MinusIcon} from './MinusIcon'

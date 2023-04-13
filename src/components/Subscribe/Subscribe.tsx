@@ -25,12 +25,12 @@ const Subscribe = () => {
           placeholder={"Your email"}
           inputClassName={styles.input}
         />
-        <div className={styles.buttonContainer}>
+        <div className={styles.button}>
           <Button
             title={"Subscribe"}
             onClick={() => {}}
             type={ButtonType.Primary}
-            className={styles.button}
+            className={styles.buttonContainer}
           />
         </div>
       </div>

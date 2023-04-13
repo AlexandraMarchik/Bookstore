@@ -9,6 +9,8 @@ import PagesContainer from "src/pages/PagesContainer";
 import RegistrationPage from "src/pages/FormContainer/RegistrationPage";
 import BookDetails from "src/pages/BookDetails";
 import Favorites from "src/pages/Favourites";
+import Search from "src/pages/Search";
+import Cart from "src/pages/Cart";
 
 
 
@@ -17,7 +19,8 @@ export enum RoutesList {
   SinglePost = "/books/:isbn13",
   Favorites ='/favorites',
   SignIn = "/sign-in",
-  // Search = "/blog/search",
+  Search = "/search/:query",
+  Cart = '/cart',
   // SignUp = "/sign-up",
   // Confirm = "activate/:uid/:token",
   // Success = "/sign-up/success",
@@ -38,10 +41,11 @@ const Router = () => {
           />
           <Route path={RoutesList.SignIn} element={<RegistrationPage />} />
           <Route path={RoutesList.Favorites} element={<Favorites />} />
+          <Route path={RoutesList.Cart} element={<Cart />} />
           {/*<Route path={RoutesList.Success} element={<Success />} />*/}
           {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}
           {/*<Route path={RoutesList.Confirm} element={<Confirm />} />*/}
-          {/*<Route path={RoutesList.Search} element={<Search />} />*/}
+          <Route path={RoutesList.Search} element={<Search />} />
           {/*<Route path={RoutesList.ResetPassword} element={<ResetPassword />} />*/}
           {/*<Route path={RoutesList.NewPassword} element={<NewPassword />} />*/}
           {/*<Route*/}

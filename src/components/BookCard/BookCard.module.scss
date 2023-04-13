@@ -12,6 +12,12 @@
   justify-content: space-between;
   align-items: center;
 }
+.searchContainer {
+  width: 100%;
+  height: 200px;
+  border-bottom: 1px solid $gray;
+}
+
 .imgContainer {
   max-width: 352px;
   height: 265px;
@@ -62,9 +68,18 @@
     cursor: pointer;
   }
 }
+.searchTextContainer {
+  display: flex;
+  justify-content: start;
+}
 .favouritesTitle {
   min-height: 0px;
+
   margin-bottom: 8px;
+}
+.searchTitle {
+  min-height: 0px;
+  font-size: 18px;
 }
 .subtitle {
   font-weight: 400;
@@ -84,9 +99,29 @@
   line-height: 32px;
   color: $primary;
 }
+.searchPrice {
+  font-size: 18px;
+}
 .likeIcon {
-    svg > path {
-      stroke: $red;
-      fill: $red;
-    }
+  svg > path {
+    stroke: $red;
+    fill: $red;
+  }
+}
+.closeIcon{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.count {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.countNumber{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $primary;
 }

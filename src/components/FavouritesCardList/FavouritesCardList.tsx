@@ -9,6 +9,7 @@ type FavouritesCardListProps = {
   booksList: BookCardType[];
 };
 const FavouritesCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
+
   return booksList.length > 0 ? (
     <div className={styles.container}>
       {booksList.map((item, index) => {

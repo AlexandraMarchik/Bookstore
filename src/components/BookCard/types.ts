@@ -15,4 +15,6 @@ export type CardProps = {
   card: BookCardType;
   form?:BookForm;
   className?: string;
+  count?:number
+
 };

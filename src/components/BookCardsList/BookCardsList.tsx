@@ -19,7 +19,7 @@ const BookCardsList: FC<CardsListProps> = ({ cardsList }) => {
     </div>
   ) : (
     <EmptyState
-      title={"Sorry, there's no posts"}
+      title={"Sorry, there's no books"}
       description={"Try to check out another category"}
     />
   );

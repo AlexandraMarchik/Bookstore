@@ -5,10 +5,11 @@ import { BookCardType } from "src/components/BookCard/types";
 
 type InitialType = {
   cartList: BookCardType[];
-
+  quantity: number;
 };
 const initialState: InitialType = {
   cartList: [],
+  quantity: 0,
 };
 
 const cartSlice = createSlice({

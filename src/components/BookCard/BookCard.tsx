@@ -8,15 +8,15 @@ import classNames from "classnames";
 import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
 import { setFavouritesBooks } from "src/redux/reducer/booksSlice";
 import {
-
   setCartList,
   setDecrementItem,
   setIncrementItem,
 } from "src/redux/reducer/cartSlice";
+import { useThemeContext } from "src/context/Books/Context";
 
-
-const BookCard: FC<CardProps> = ({ card, form, className, }) => {
+const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13 } = card;
+  const { currentQuantity, setCurrentQuantity } = useThemeContext();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,16 +28,15 @@ const BookCard: FC<CardProps> = ({ card, form, className, }) => {
   const isCart = form === BookForm.Cart;
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  const sumOneBookPrice = count * +price.substring(1);
-
+  const sumOneBookPrice = currentQuantity * +price.substring(1);
 
   const incrementCount = (isbn13) => {
     dispatch(setIncrementItem(isbn13));
-    setCount(count + 1);
+    setCurrentQuantity(currentQuantity + 1);
   };
   const decrementCount = (isbn13) => {
-    if (count !== 1) {
-      setCount(count - 1);
+    if (currentQuantity !== 1) {
+      setCurrentQuantity (currentQuantity - 1);
       dispatch(setDecrementItem(isbn13));
     }
   };
@@ -112,7 +111,7 @@ const BookCard: FC<CardProps> = ({ card, form, className, }) => {
                   <div onClick={decrementCount}>
                     <MinusIcon />
                   </div>
-                  <div className={styles.countNumber}>{count}</div>
+                  <div className={styles.countNumber}>{currentQuantity}</div>
                   <div onClick={incrementCount}>
                     <PlusIcon />
                   </div>
@@ -135,7 +134,6 @@ const BookCard: FC<CardProps> = ({ card, form, className, }) => {
           </div>
         )}
       </div>
-
     </>
   );
 };

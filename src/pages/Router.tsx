@@ -16,7 +16,7 @@ import Cart from "src/pages/Cart";
 
 export enum RoutesList {
   Home = "/",
-  SinglePost = "/books/:isbn13",
+  SingleBook = "/books/:isbn13",
   Favorites ='/favorites',
   SignIn = "/sign-in",
   Search = "/search/:query",
@@ -24,7 +24,7 @@ export enum RoutesList {
   // SignUp = "/sign-up",
   // Confirm = "activate/:uid/:token",
   // Success = "/sign-up/success",
-  // Default = "*",
+  Default = "*",
   // ResetPassword = "/sign-in/reset-password",
   // NewPassword = '/new-password'
 }
@@ -36,16 +36,17 @@ const Router = () => {
         <Route path={RoutesList.Home} element={<PagesContainer />}>
           <Route path={RoutesList.Home} element={<Home />} />
           <Route
-            path={RoutesList.SinglePost}
+            path={RoutesList.SingleBook}
             element={<BookDetails/>}
           />
           <Route path={RoutesList.SignIn} element={<RegistrationPage />} />
           <Route path={RoutesList.Favorites} element={<Favorites />} />
           <Route path={RoutesList.Cart} element={<Cart />} />
+          <Route path={RoutesList.Search} element={<Search />} />
+          <Route path={RoutesList.Default} element={<div>404 NOT FOUND</div>} />
           {/*<Route path={RoutesList.Success} element={<Success />} />*/}
           {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}
           {/*<Route path={RoutesList.Confirm} element={<Confirm />} />*/}
-          <Route path={RoutesList.Search} element={<Search />} />
           {/*<Route path={RoutesList.ResetPassword} element={<ResetPassword />} />*/}
           {/*<Route path={RoutesList.NewPassword} element={<NewPassword />} />*/}
           {/*<Route*/}
@@ -54,7 +55,6 @@ const Router = () => {
           {/*    isLoggedIn ? <AddPost /> : <Navigate to={RoutesList.SignIn} />*/}
           {/*  }*/}
           {/*/>*/}
-          {/*<Route path={RoutesList.Default} element={<div>404 NOT FOUND</div>} />*/}
         </Route>
       </Routes>
     </BrowserRouter>

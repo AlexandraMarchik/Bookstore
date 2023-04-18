@@ -11,6 +11,7 @@ import BookDetails from "src/pages/BookDetails";
 import Favorites from "src/pages/Favourites";
 import Search from "src/pages/Search";
 import Cart from "src/pages/Cart";
+import NotFound from "src/pages/NotFound";
 
 
 
@@ -20,8 +21,7 @@ export enum RoutesList {
   Favorites ='/favorites',
   SignIn = "/sign-in",
   Search = "/search/:query",
-  Cart = '/cart',
-  // SignUp = "/sign-up",
+  Cart = "/cart",
   // Confirm = "activate/:uid/:token",
   // Success = "/sign-up/success",
   Default = "*",
@@ -43,7 +43,7 @@ const Router = () => {
           <Route path={RoutesList.Favorites} element={<Favorites />} />
           <Route path={RoutesList.Cart} element={<Cart />} />
           <Route path={RoutesList.Search} element={<Search />} />
-          <Route path={RoutesList.Default} element={<div>404 NOT FOUND</div>} />
+          <Route path={RoutesList.Default} element={<NotFound/>} />
           {/*<Route path={RoutesList.Success} element={<Success />} />*/}
           {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}
           {/*<Route path={RoutesList.Confirm} element={<Confirm />} />*/}

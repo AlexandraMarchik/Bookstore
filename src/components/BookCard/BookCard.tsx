@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { BookForm, CardProps } from "src/components/BookCard/types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import styles from "./BookCard.module.scss";
 import classNames from "classnames";
+import styles from "./BookCard.module.scss";
 import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
 import { setFavouritesBooks } from "src/redux/reducer/booksSlice";
 import {
@@ -53,7 +53,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   };
   useEffect(() => {
     setColor(randomColor);
-  }, [randomColor]);
+  }, []);
 
   return (
     <>

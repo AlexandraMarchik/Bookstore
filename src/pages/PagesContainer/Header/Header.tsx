@@ -1,5 +1,5 @@
-import React, {useState, KeyboardEvent} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import React, { useState, KeyboardEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RoutesList } from "src/pages/Router";
 
@@ -16,15 +16,17 @@ import {
 } from "src/assets/icon";
 import {
   BooksSelectors,
+  getAllBooks,
   getSearchBooks,
 } from "src/redux/reducer/booksSlice";
-import {CartSelectors} from "src/redux/reducer/cartSlice";
+import { CartSelectors } from "src/redux/reducer/cartSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState("");
+  // const currentPage =useSelector(BooksSelectors.getCurrentPage)
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.find((books) => books.isbn13);
   const cartList = useSelector(CartSelectors.getCartList);
@@ -39,7 +41,7 @@ const Header = () => {
 
   const onSearchValue = (value: string) => {
     setSearchValue(value);
-    };
+  };
   const onLikeIconClick = () => {
     navigate(RoutesList.Favorites);
   };
@@ -52,7 +54,9 @@ const Header = () => {
   const onClickSearchButton = () => {
     dispatch(getSearchBooks(searchValue));
     navigate(RoutesList.Search);
-    navigate(`/search/${searchValue}`)
+    if(searchValue) {
+      navigate(`/search/${searchValue}/`);
+    }
   };
 
   return (

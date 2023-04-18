@@ -1,0 +1,21 @@
+@import'src/assets/colors';
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 30px;
+}
+
+.codeError{
+  font-size: 200px;
+  color: $primary ;
+}
+.textNotFound{
+  font-size: 50px;
+  color: $primary ;
+}
+.textError{
+color:$primary-secondary ;
+}

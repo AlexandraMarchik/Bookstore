@@ -4,11 +4,14 @@ export type AllBooksResponse = {
   total: string;
   books: BookCardType[];
 };
+
 export type SearchBooksResponse = {
   total: string;
   page: string;
   books: BookCardType[];
 };
+
+
 export type SingleBooksResponse = {
   error: string;
   title: string;

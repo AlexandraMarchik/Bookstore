@@ -9,9 +9,10 @@ const getBooks = () => {
 const getSingleBook = (isbn13: string) => {
   return API.get(`/books/${isbn13}`);
 };
-const getSearchBooks = (query: string) => {
+const getSearchBooks = (query?: string) => {
   return API.get(`/search/${query}`);
 };
+
 
 export default {
   getBooks,

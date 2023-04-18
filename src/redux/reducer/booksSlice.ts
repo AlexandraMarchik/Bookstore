@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { BookCardType } from "src/components/BookCard/types";
 import { SingleBooksResponse } from "src/redux/sagas/@types";
+import { SetSearchBooksPayload } from "src/redux/reducer/@types";
 
 type InitialType = {
   booksList: BookCardType[];
@@ -13,6 +14,8 @@ type InitialType = {
   previewBook: string | null;
   searchValue: string;
   searchBooks: BookCardType[];
+  totalBooks: string;
+  currenPage: number;
 };
 
 const initialState: InitialType = {
@@ -24,7 +27,8 @@ const initialState: InitialType = {
   isVisibleModal: false,
   searchValue: "",
   searchBooks: [],
-
+  totalBooks: "0",
+  currenPage: 1,
 };
 
 const booksSlice = createSlice({
@@ -64,10 +68,21 @@ const booksSlice = createSlice({
     getSearchBooks: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
-    setSearchBooks: (state, action: PayloadAction<BookCardType[]>) => {
-      state.searchBooks = action.payload;
+    setSearchBooks: (
+      state,
+      {
+        payload: { booksList, booksCount },
+      }: PayloadAction<SetSearchBooksPayload>
+    ) => {
+      state.searchBooks = booksList;
+      state.totalBooks = booksCount;
     },
- }});
+  },
+});
+
+// ,action: PayloadAction<BookCardType[]>) => {
+//   state.searchBooks = action.payload;
+// },
 
 export const {
   getAllBooks,
@@ -80,7 +95,6 @@ export const {
   setPreviewBook,
   getSearchBooks,
   setSearchBooks,
-
 } = booksSlice.actions;
 
 export default booksSlice.reducer;
@@ -94,4 +108,6 @@ export const BooksSelectors = {
   getPreviewBook: (state: RootState) => state.books.previewBook,
   getSearchedBooks: (state: RootState) => state.books.searchBooks,
   getSearchValue: (state: RootState) => state.books.searchValue,
+  getTotalCount: (state: RootState) => state.books.totalBooks,
+  // getCurrentPage: (state: RootState) => state.books.currenPage,
 };

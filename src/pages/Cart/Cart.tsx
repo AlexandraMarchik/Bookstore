@@ -1,17 +1,23 @@
 import React, {useEffect} from "react";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import FormContainer from "src/pages/FormContainer";
 import CartList from "src/components/CartList";
-import { CartSelectors } from "src/redux/reducer/cartSlice";
+import {CartSelectors, setCartList} from "src/redux/reducer/cartSlice";
 import styles from "./Cart.module.scss";
 import Button from "src/components/Button";
 import { ButtonType } from "src/components/Button/Button";
 import { useThemeContext } from "src/context/Books/Context";
+import {BooksSelectors} from "src/redux/reducer/booksSlice";
 
 const Cart = () => {
+  const dispatch =useDispatch()
   const cartList = useSelector(CartSelectors.getCartList);
   const { currentQuantity,setCurrentQuantity } = useThemeContext();
+
+  // const onCloseIconClick = () => {
+  //   dispatch(setCartList());
+  // };
 
   const sumTotal = cartList
     .map((item) => (+item?.price.substring(1)) * currentQuantity)
@@ -26,6 +32,7 @@ const Cart = () => {
       <FormContainer title={"Your cart"} />
       <div className={styles.container}>
         <CartList cartList={cartList} />
+        <div className={styles.checkOut}>
         <div className={styles.checkOutContainer}>
           <div className={styles.sumTotal}>
             <div className={styles.textContainer}>Sum total</div>
@@ -43,10 +50,12 @@ const Cart = () => {
             <Button
               title={"check out"}
               onClick={() => {}}
+              disabled={cartList.length == 0}
               type={ButtonType.Primary}
               className={styles.button}
             />
           </div>
+        </div>
         </div>
       </div>
     </div>

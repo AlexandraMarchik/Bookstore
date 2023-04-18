@@ -8,7 +8,6 @@ import BookCard from "src/components/BookCard";
 
 type CartListProps = {
   cartList: BookCardType[];
-  sumPrice?: number;
 };
 
 const CartList: FC<CartListProps> = ({ cartList }) => {

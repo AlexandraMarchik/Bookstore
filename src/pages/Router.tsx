@@ -20,7 +20,7 @@ export enum RoutesList {
   SingleBook = "/books/:isbn13",
   Favorites ='/favorites',
   SignIn = "/sign-in",
-  Search = "/search/:query",
+  Search = "/search/:query/:page",
   Cart = "/cart",
   // Confirm = "activate/:uid/:token",
   // Success = "/sign-up/success",

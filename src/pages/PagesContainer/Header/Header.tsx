@@ -1,5 +1,5 @@
 import React, { useState, KeyboardEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RoutesList } from "src/pages/Router";
 
@@ -16,8 +16,7 @@ import {
 } from "src/assets/icon";
 import {
   BooksSelectors,
-  getAllBooks,
-  getSearchBooks,
+  setSearchedValueBooks,
 } from "src/redux/reducer/booksSlice";
 import { CartSelectors } from "src/redux/reducer/cartSlice";
 
@@ -26,13 +25,12 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState("");
-  // const currentPage =useSelector(BooksSelectors.getCurrentPage)
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.find((books) => books.isbn13);
   const cartList = useSelector(CartSelectors.getCartList);
   const cartIndex = cartList.find((books) => books.isbn13);
 
-  // поиск из строки search при нажатии на enter
+
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onClickSearchButton();
@@ -51,12 +49,10 @@ const Header = () => {
   const onCartIconClick = () => {
     navigate(RoutesList.Cart);
   };
+
   const onClickSearchButton = () => {
-    dispatch(getSearchBooks(searchValue));
+    dispatch(setSearchedValueBooks(searchValue));
     navigate(RoutesList.Search);
-    if(searchValue) {
-      navigate(`/search/${searchValue}/`);
-    }
   };
 
   return (

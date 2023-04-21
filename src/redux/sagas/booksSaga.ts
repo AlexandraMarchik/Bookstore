@@ -5,7 +5,7 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 import API from "../api";
 import {
   AllBooksResponse,
-  SearchBooksResponse,
+  SearchBooksResponse, SearchPaginationResponse,
   SingleBooksResponse,
 } from "./@types";
 import {
@@ -13,13 +13,13 @@ import {
   getSearchBooks,
   getSingleBook,
   setAllBooks,
-  setAllBooksLoading,
+  setBooksLoading,
   setSearchBooks,
   setSingleBook,
 } from "src/redux/reducer/booksSlice";
 
 function* getAllBooksWorker() {
-  yield put(setAllBooksLoading(true));
+  yield put(setBooksLoading(true));
   const { ok, data, problem }: ApiResponse<AllBooksResponse> = yield call(
     API.getBooks
   );
@@ -28,7 +28,7 @@ function* getAllBooksWorker() {
   } else {
     console.warn("Error getting all books", problem);
   }
-  yield put(setAllBooksLoading(false));
+  yield put(setBooksLoading(false));
 }
 
 function* getSinglePostWorker(action: PayloadAction<string>) {
@@ -43,21 +43,23 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
   }
 }
 
-function* getSearchedBooksWorker(action: PayloadAction<string>) {
-  yield put(setAllBooksLoading(true));
+function* getSearchedBooksWorker(action:PayloadAction<SearchPaginationResponse>){
+  yield put(setBooksLoading(true));
+  const { page, query  } = action.payload
   const { ok, data, problem }: ApiResponse<SearchBooksResponse> = yield call(
-    API.getSearchBooks,
-    action.payload
+    API.getSearchBooks,page ,query
   );
   if (ok && data) {
     yield put(
-      setSearchBooks({ booksList: data.books, booksCount: data.total })
+      setSearchBooks({ booksList: data.books, booksCount: data.total})
     );
   } else {
     console.warn("Error getting all posts", problem);
   }
-  yield put(setAllBooksLoading(false));
+  yield put(setBooksLoading(false));
 }
+
+
 
 export default function* booksSaga() {
   yield all([

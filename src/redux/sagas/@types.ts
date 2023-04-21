@@ -10,7 +10,10 @@ export type SearchBooksResponse = {
   page: string;
   books: BookCardType[];
 };
-
+export type SearchPaginationResponse ={
+  query: string;
+  page: number;
+}
 
 export type SingleBooksResponse = {
   error: string;

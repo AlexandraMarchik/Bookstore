@@ -9,7 +9,12 @@
 .input{
   width: 480px;
   height: 56px;
-  margin-bottom:16px ;
+
+}
+.inp{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .btn{
   display: flex;

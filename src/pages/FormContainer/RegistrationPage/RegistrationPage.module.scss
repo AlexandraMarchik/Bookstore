@@ -8,6 +8,11 @@
   flex-direction: column;
   width: 544px;
 }
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .tab {
   font-weight: 700;
   font-size: 24px;

@@ -1,0 +1,61 @@
+@import "src/assets/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+}
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.text {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $primary;
+  text-transform: uppercase;
+}
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 16px;
+}
+.passwordContainer {
+  margin-top: 48px;
+}
+.passwordInput {
+  margin: 16px 0px;
+}
+.newPasswordInput {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+.buttonContainer {
+  display: flex;
+  gap: 32px;
+  margin-top:48px ;
+}
+.saveButton {
+  width: 257px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancelButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 257px;
+  height: 56px;
+  border: 1px solid $gray;
+  background-color:transparent;
+  color: $primary;
+  &:hover{
+    background-color: $gray;
+  }
+}

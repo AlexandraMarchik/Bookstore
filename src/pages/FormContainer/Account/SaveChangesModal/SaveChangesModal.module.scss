@@ -1,0 +1,21 @@
+@import "src/assets/colors";
+
+.buttonContainer {
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.text {
+  font-size: 40px;
+  color: $primary;
+  font-weight: 700;
+  line-height: 32px;
+}
+.cont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}

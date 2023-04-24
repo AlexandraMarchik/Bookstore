@@ -27,8 +27,7 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
-import {setCartList} from "src/redux/reducer/cartSlice";
-
+import { setCartList } from "src/redux/reducer/cartSlice";
 
 const TABS_LIST = [
   {
@@ -57,7 +56,7 @@ const BookDetails = () => {
   const pdfFile = !!singleBook?.pdf ? Object.values(singleBook?.pdf)[0] : null;
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.findIndex(
-      (books) => books.isbn13 === singleBook?.isbn13
+    (books) => books.isbn13 === singleBook?.isbn13
   );
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
@@ -81,7 +80,7 @@ const BookDetails = () => {
       dispatch(setPreviewBookVisibility(true));
     }
   };
-    const onClickAddToCart = () => {
+  const onClickAddToCart = () => {
     if (singleBook) {
       dispatch(setCartList(singleBook));
     }

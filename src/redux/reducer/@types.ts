@@ -4,4 +4,8 @@ export type SetSearchBooksPayload = {
   booksList: BookCardType[];
   booksCount: string;
 };
-
+export type SetUserPayload = {
+  email: string | null;
+  token: string | null;
+  id: string | null;
+};

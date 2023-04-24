@@ -5,9 +5,8 @@ import ThemeProvider from "src/context/Books/Provider";
 
 
 
+
 const App = () => {
-
-
   return (
       <ThemeProvider >
         <Router />

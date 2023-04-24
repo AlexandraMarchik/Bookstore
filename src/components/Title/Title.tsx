@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from "react";
 import styles from "../Title/Title.module.scss";
 
 type TitleProps = {
-  title: any;
+  title: string;
 };
 
 const Title: FC<TitleProps> = ({ title }) => {

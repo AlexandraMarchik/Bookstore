@@ -12,6 +12,7 @@ import Favorites from "src/pages/Favourites";
 import Search from "src/pages/Search";
 import Cart from "src/pages/Cart";
 import NotFound from "src/pages/NotFound";
+import Account from "src/pages/FormContainer/Account";
 
 
 
@@ -19,11 +20,10 @@ export enum RoutesList {
   Home = "/",
   SingleBook = "/books/:isbn13",
   Favorites ='/favorites',
-  SignIn = "/sign-in",
+  Auth = "/auth",
   Search = "/search/:query/:page",
   Cart = "/cart",
-  // Confirm = "activate/:uid/:token",
-  // Success = "/sign-up/success",
+  Account = "/user",
   Default = "*",
   // ResetPassword = "/sign-in/reset-password",
   // NewPassword = '/new-password'
@@ -39,14 +39,13 @@ const Router = () => {
             path={RoutesList.SingleBook}
             element={<BookDetails/>}
           />
-          <Route path={RoutesList.SignIn} element={<RegistrationPage />} />
+          <Route path={RoutesList.Auth} element={<RegistrationPage />} />
           <Route path={RoutesList.Favorites} element={<Favorites />} />
           <Route path={RoutesList.Cart} element={<Cart />} />
           <Route path={RoutesList.Search} element={<Search />} />
           <Route path={RoutesList.Default} element={<NotFound/>} />
-          {/*<Route path={RoutesList.Success} element={<Success />} />*/}
-          {/*<Route path={RoutesList.SignUp} element={<SignUp />} />*/}
-          {/*<Route path={RoutesList.Confirm} element={<Confirm />} />*/}
+          <Route path={RoutesList.Account} element={<Account/>} />
+
           {/*<Route path={RoutesList.ResetPassword} element={<ResetPassword />} />*/}
           {/*<Route path={RoutesList.NewPassword} element={<NewPassword />} />*/}
           {/*<Route*/}

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "../store";
-import { BookCardType } from "src/components/BookCard/types";
+import {BookCardType, BookCartType} from "src/components/BookCard/types";
 import {
   SearchPaginationResponse,
   SingleBooksResponse,
@@ -12,14 +12,14 @@ import {
 
 
 type InitialType = {
-  booksList: BookCardType[];
+  booksList: BookCartType[];
   singleBook: SingleBooksResponse | null;
-  favouritesBooks: BookCardType[];
+  favouritesBooks: BookCartType[];
   isAllBooksLoading: boolean;
   isVisibleModal: boolean;
   previewBook: string | null;
   searchValue: string;
-  searchBooks: BookCardType[];
+  searchBooks: BookCartType[];
   totalBooks: string;
   page: number;
 };
@@ -42,7 +42,7 @@ const booksSlice = createSlice({
   initialState,
   reducers: {
     getAllBooks: (_, __: PayloadAction<undefined>) => {},
-    setAllBooks: (state, action: PayloadAction<BookCardType[]>) => {
+    setAllBooks: (state, action: PayloadAction<BookCartType[]>) => {
       state.booksList = action.payload;
     },
     getSingleBook: (state, action: PayloadAction<string>) => {},
@@ -52,7 +52,7 @@ const booksSlice = createSlice({
     ) => {
       state.singleBook = action.payload;
     },
-    setFavouritesBooks: (state, action: PayloadAction<BookCardType>) => {
+    setFavouritesBooks: (state, action: PayloadAction<BookCartType>) => {
       const favoritesIndex = state.favouritesBooks.findIndex(
         (books) => books.isbn13 === action.payload.isbn13
       );

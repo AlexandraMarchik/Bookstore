@@ -2,11 +2,11 @@ import React, { FC } from "react";
 
 import styles from "./FavouritesCardList.module.scss";
 import EmptyState from "src/components/EmptyState";
-import { BookCardType, BookForm } from "src/components/BookCard/types";
+import { BookCartType, BookForm} from "src/components/BookCard/types";
 import BookCard from "src/components/BookCard";
 
 type FavouritesCardListProps = {
-  booksList: BookCardType[];
+  booksList: BookCartType[];
 };
 const FavouritesCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
 

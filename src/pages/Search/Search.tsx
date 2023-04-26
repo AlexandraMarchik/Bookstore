@@ -42,7 +42,7 @@ const Search = () => {
       <div className={styles.textContainer}>
           '<Title title={searchValue} />' Search results
       </div>
-        <div className={styles.countSearchedBooks}>Found {cardList?.length} books</div>
+        <div className={styles.countSearchedBooks}>Found {postsCount} books</div>
       {isLoading ? (
         <Loader />
       ) : (

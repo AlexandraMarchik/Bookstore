@@ -2,15 +2,15 @@ import React, { FC } from "react";
 
 import styles from "./CartList.module.scss";
 import EmptyState from "src/components/EmptyState";
-import { BookCardType, BookForm } from "src/components/BookCard/types";
+import {BookCardType, BookCartType, BookForm} from "src/components/BookCard/types";
 import BookCard from "src/components/BookCard";
 
 
 type CartListProps = {
-  cartList: BookCardType[];
+  cartList: BookCartType[];
 };
 
-const CartList: FC<CartListProps> = ({ cartList }) => {
+const CartList: FC<CartListProps> = ({ cartList}) => {
   return cartList.length > 0 ? (
     <div className={styles.container}>
         {cartList.map((item) => {

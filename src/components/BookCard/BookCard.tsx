@@ -12,34 +12,22 @@ import {
   setDecrementItem,
   setIncrementItem,
 } from "src/redux/reducer/cartSlice";
-import { useThemeContext } from "src/context/Books/Context";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
-  const { image, title, subtitle, price, isbn13 } = card;
-  const { currentQuantity, setCurrentQuantity } = useThemeContext();
+  const { image, title, subtitle, price, isbn13, quantity } = card;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [color, setColor] = useState("");
-  const [count, setCount] = useState(1);
 
   const colors = ["#D7E4FD", "#CAEFF0", "#FEE9E2", "#F4EEFD"];
   const isFavourites = form === BookForm.Favourite;
   const isCart = form === BookForm.Cart;
-
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  const sumOneBookPrice = currentQuantity * +price.substring(1);
+  const sumOneBookPrice = quantity * +price.substring(1);
 
-  const incrementCount = (isbn13) => {
-    dispatch(setIncrementItem(isbn13));
-    setCurrentQuantity(currentQuantity + 1);
-  };
-  const decrementCount = (isbn13) => {
-    if (currentQuantity !== 1) {
-      setCurrentQuantity (currentQuantity - 1);
-      dispatch(setDecrementItem(isbn13));
-    }
-  };
+
   const onLikeIconClick = () => {
     if (card) {
       dispatch(setFavouritesBooks(card));
@@ -51,6 +39,16 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const onTitleClick = () => {
     navigate(`/books/${isbn13}`);
   };
+  const incrementCount = () => {
+    dispatch(setIncrementItem(isbn13));
+  };
+  const decrementCount = () => {
+    if (quantity !== 1) {
+      dispatch(setDecrementItem(isbn13));
+    }
+  };
+
+
   useEffect(() => {
     setColor(randomColor);
   }, []);
@@ -101,9 +99,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
                 [styles.favouritesFooter]: isFavourites,
               })}
             >
-              {!isCart && (
-                <div className={classNames(styles.price, {})}>{price}</div>
-              )}
+              {!isCart && <div className={styles.price}>{price}</div>}
             </div>
             <div>
               {isCart && (
@@ -111,7 +107,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
                   <div onClick={decrementCount}>
                     <MinusIcon />
                   </div>
-                  <div className={styles.countNumber}>{currentQuantity}</div>
+                  <div className={styles.countNumber}>{quantity}</div>
                   <div onClick={incrementCount}>
                     <PlusIcon />
                   </div>
@@ -127,9 +123,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
         )}
         {isCart && (
           <div onClick={onCloseIconClick} className={styles.closeIcon}>
-            <div className={classNames(styles.price, {})}>
-              {sumOneBookPrice.toFixed(2)}
-            </div>
+            <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>
             <CloseIconModal />
           </div>
         )}

@@ -3,13 +3,12 @@ import React, { FC, useEffect } from "react";
 import EmptyState from "src/components/EmptyState";
 import styles from "./SearchCardList.module.scss";
 import BookCard from "src/components/BookCard";
-import { BookCardType } from "src/components/BookCard/types";
+import { BookCartType } from "src/components/BookCard/types";
 
 type SearchCardListProps = {
-  cardsList: BookCardType[];
+  cardsList: BookCartType[];
 };
 const SearchCardList: FC<SearchCardListProps> = ({ cardsList }) => {
-
   return cardsList?.length > 0 ? (
     <div className={styles.container}>
       {cardsList.map((item) => {

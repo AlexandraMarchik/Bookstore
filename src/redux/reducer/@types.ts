@@ -1,7 +1,7 @@
-import { BookCardType } from "src/components/BookCard/types";
+import {BookCardType, BookCartType} from "src/components/BookCard/types";
 
 export type SetSearchBooksPayload = {
-  booksList: BookCardType[];
+  booksList: BookCartType[];
   booksCount: string;
 };
 export type SetUserPayload = {

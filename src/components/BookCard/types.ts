@@ -9,12 +9,29 @@ export type BookCardType = {
 
 export enum BookForm {
   Favourite,
-  Cart
+  Cart,
 }
 export type CardProps = {
-  card: BookCardType;
-  form?:BookForm;
+  card: BookCartType;
+  form?: BookForm;
   className?: string;
-  count?:number
+};
 
+export type BookCartType = {
+  error: string;
+  title: string;
+  subtitle: string;
+  authors: string;
+  publisher: string;
+  isbn10: string;
+  isbn13: string;
+  pages: string;
+  year: string;
+  rating: string;
+  desc: string;
+  price: string;
+  image: string;
+  url: string;
+  pdf?: { [key: string]: string };
+  quantity: number;
 };

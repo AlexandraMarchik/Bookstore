@@ -24,7 +24,7 @@ import { AuthUser } from "src/hooks/AuthUser";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuth, email } = AuthUser();
+  const { isAuth} = AuthUser();
 
   const [searchValue, setSearchValue] = useState("");
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);

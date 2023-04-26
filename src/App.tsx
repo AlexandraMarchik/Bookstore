@@ -8,9 +8,9 @@ import ThemeProvider from "src/context/Books/Provider";
 
 const App = () => {
   return (
-      <ThemeProvider >
+      // <ThemeProvider >
         <Router />
-      </ThemeProvider>
+      // </ThemeProvider>
   );
 };
 export default App;

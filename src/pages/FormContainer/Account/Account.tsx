@@ -8,7 +8,7 @@ import Button from "src/components/Button";
 import { ButtonType } from "src/components/Button/Button";
 import {useNavigate} from "react-router-dom";
 import {RoutesList} from "src/pages/Router";
-import {setPreviewBook, setPreviewBookVisibility} from "src/redux/reducer/booksSlice";
+import { setPreviewBookVisibility} from "src/redux/reducer/booksSlice";
 import {useDispatch} from "react-redux";
 import SaveChangesModal from "src/pages/FormContainer/Account/SaveChangesModal";
 

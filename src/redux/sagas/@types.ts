@@ -1,20 +1,18 @@
-import { BookCardType } from "src/components/BookCard/types";
+import { BookCartType } from "src/components/BookCard/types";
 
 export type AllBooksResponse = {
   total: string;
-  books: BookCardType[];
+  books: BookCartType[];
 };
-
 export type SearchBooksResponse = {
   total: string;
   page: string;
-  books: BookCardType[];
+  books: BookCartType[];
 };
-export type SearchPaginationResponse ={
+export type SearchPaginationResponse = {
   query: string;
   page: number;
-}
-
+};
 export type SingleBooksResponse = {
   error: string;
   title: string;
@@ -30,5 +28,6 @@ export type SingleBooksResponse = {
   price: string;
   image: string;
   url: string;
-  pdf: string;
+  pdf?: { [key: string]: string };
+  quantity: number;
 };

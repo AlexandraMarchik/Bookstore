@@ -82,7 +82,7 @@ const BookDetails = () => {
   };
   const onClickAddToCart = () => {
     if (singleBook) {
-      dispatch(setCartList(singleBook ));
+      dispatch(setCartList(singleBook));
     }
   };
 

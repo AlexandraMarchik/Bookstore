@@ -38,8 +38,3 @@ export const { setUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
 
-export const userSelectors = {
-  getUserEmail: (state: RootState) => state.user.email,
-  getUserToken: (state: RootState) => state.user.token,
-  getUserId: (state: RootState) => state.user.id,
-};

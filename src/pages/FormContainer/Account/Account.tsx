@@ -16,7 +16,7 @@ const Account = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { isAuth, email } = AuthUser();
+  const { email } = AuthUser();
   const userName = localStorage.getItem("savedUserName");
 
   const [name, setName] = useState(userName);

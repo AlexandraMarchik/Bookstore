@@ -15,3 +15,4 @@ export { CloseIconModal } from "./CloseIconModal";
 export { CartAddIcon } from './CartAddIcon';
 export {PlusIcon} from './PlusIcon'
 export {MinusIcon} from './MinusIcon'
+export {CheckIcon} from './CheckIcon'

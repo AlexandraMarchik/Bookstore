@@ -7,15 +7,19 @@
   text-transform: uppercase;
   display: flex;
 }
-
 .modalActive {
   background: rgba(38, 34, 47, 0.5);
 }
-
+.pageContainer{
+  margin-top: 72px;
+  border-top: 1px solid $gray;
+  width: 100%;
+}
 .pagesContainer {
-  margin: 72px 0;
+  margin-top: 48px;
   display: flex;
   padding: 0;
+  width: 100%;
 }
 .pageNumber {
   list-style-type: none;
@@ -26,14 +30,16 @@
   justify-content: center;
   align-items: center;
   border-radius: 2px;
-  color: #53607a;
+  color: $secondary;
   outline: none;
   padding: 4px;
   user-select: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
   &:hover {
     cursor: pointer;
-    background-color: $primary-secondary;
-    color: $white;
+    color: $primary;
   }
 }
 
@@ -44,8 +50,6 @@
   }
 }
 .activePageNumber {
-  box-sizing: border-box;
-  border: 1px solid $primary;
   color: $primary;
 }
 .arrowButton {
@@ -55,9 +59,11 @@
   padding: 4px;
   border-radius: 4px;
   user-select: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
   &:hover {
-    background-color: $primary-secondary;
-    color: $white;
+    color: $secondary;
     cursor: pointer;
   }
 }

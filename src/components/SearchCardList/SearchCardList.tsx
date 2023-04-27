@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 
-import EmptyState from "src/components/EmptyState";
 import styles from "./SearchCardList.module.scss";
-import BookCard from "src/components/BookCard";
 import { BookCartType } from "src/components/BookCard/types";
+import EmptyState from "src/components/EmptyState";
+import BookCard from "src/components/BookCard";
 
 type SearchCardListProps = {
   cardsList: BookCartType[];

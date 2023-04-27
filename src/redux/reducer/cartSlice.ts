@@ -3,11 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { BookCartType } from "src/components/BookCard/types";
 
+
 type InitialType = {
   cartList: BookCartType[];
+  remove:[],
 };
 const initialState: InitialType = {
   cartList: [],
+  remove:[],
 };
 
 const cartSlice = createSlice({
@@ -38,10 +41,13 @@ const cartSlice = createSlice({
         }
       });
     },
+    setRemoveFromCart:(state, action: PayloadAction<any>) => {
+      state.cartList = state.remove;
+    },
   },
 });
 
-export const { setCartList, setIncrementItem,setDecrementItem } = cartSlice.actions;
+export const { setCartList, setIncrementItem,setDecrementItem,setRemoveFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
 

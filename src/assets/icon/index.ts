@@ -12,7 +12,9 @@ export { InterfaceIcon } from "./InterfaceIcon";
 export { InterfaceSecondIcon } from "./InterfaceIcon2";
 export { LikeFavoritesIcon } from "./LikeFavoritesIcon";
 export { CloseIconModal } from "./CloseIconModal";
-export { CartAddIcon } from './CartAddIcon';
-export {PlusIcon} from './PlusIcon'
-export {MinusIcon} from './MinusIcon'
-export {CheckIcon} from './CheckIcon'
+export { CartAddIcon } from "./CartAddIcon";
+export { PlusIcon } from "./PlusIcon";
+export { MinusIcon } from "./MinusIcon";
+export { CheckIcon } from "./CheckIcon";
+export { PrevSliderArrowIcon } from "./PrevSliderArrowIcon";
+export { NextSliderArrowIcon } from "./NextSliderArrowIcon";

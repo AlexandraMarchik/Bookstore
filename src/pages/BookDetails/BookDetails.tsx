@@ -28,6 +28,8 @@ import {
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
 import { setCartList } from "src/redux/reducer/cartSlice";
+import SimilarBooksSlider from "src/components/BooksSlider";
+import BooksSlider from "src/components/BooksSlider";
 
 const TABS_LIST = [
   {
@@ -62,7 +64,6 @@ const BookDetails = () => {
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
   const [showDetails, setShowDetails] = useState(false);
 
-
   const onLikeIconClick = () => {
     if (singleBook) {
       dispatch(setFavouritesBooks(singleBook));
@@ -93,122 +94,133 @@ const BookDetails = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      {singleBook?.title && <FormContainer title={singleBook?.title} />}
-      <div className={styles.bookInfoContainer}>
-        <div className={styles.bookContainer}>
-          <img src={singleBook?.image} className={styles.image}></img>
-          <div
-            className={classNames(styles.likeIcon, {
-              [styles.activeLikeIcon]: favoritesIndex > -1,
-            })}
-            onClick={onLikeIconClick}
-          >
-            <LikeIcon />
+    <>
+      <div className={styles.container}>
+        {singleBook?.title && <FormContainer title={singleBook?.title} />}
+        <div className={styles.bookInfoContainer}>
+          <div className={styles.bookContainer}>
+            <img src={singleBook?.image} className={styles.image}></img>
+            <div
+              className={classNames(styles.likeIcon, {
+                [styles.activeLikeIcon]: favoritesIndex > -1,
+              })}
+              onClick={onLikeIconClick}
+            >
+              <LikeIcon />
+            </div>
           </div>
-        </div>
-        <div className={styles.descriptionContainer}>
-          <div className={styles.descriptionInfoContainer}>
-            <div className={styles.priceContainer}>
-              <div className={styles.price}>{singleBook?.price}</div>
-              <div className={styles.rating}>
-                <Rating
-                  readonly={true}
-                  initialValue={singleBook?.rating}
-                  SVGclassName={styles.icon}
-                  fillColor={"#313037"}
-                  emptyColor={"#E7E7E7"}
+          <div className={styles.descriptionContainer}>
+            <div className={styles.descriptionInfoContainer}>
+              <div className={styles.priceContainer}>
+                <div className={styles.price}>{singleBook?.price}</div>
+                <div className={styles.rating}>
+                  <Rating
+                    readonly={true}
+                    initialValue={singleBook?.rating}
+                    SVGclassName={styles.icon}
+                    fillColor={"#313037"}
+                    emptyColor={"#E7E7E7"}
+                  />
+                </div>
+              </div>
+              <div className={styles.aboutBookContainer}>
+                <div className={styles.aboutBook}>{"Authors"}</div>
+                <div className={styles.aboutBookInfo}>
+                  {singleBook?.authors}{" "}
+                </div>
+              </div>
+              <div className={styles.aboutBookContainer}>
+                <div className={styles.aboutBook}>{"Publisher"}</div>
+                <div className={styles.aboutBookInfo}>
+                  {singleBook?.publisher}
+                </div>
+              </div>
+              <div className={styles.aboutBookContainer}>
+                <div className={styles.aboutBook}>{"Pages"}</div>
+                <div className={styles.aboutBookInfo}>{singleBook?.pages} </div>
+              </div>
+              {showDetails && (
+                <div>
+                  <div className={styles.aboutBookContainer}>
+                    <div className={styles.aboutBook}>{"isbn13"}</div>
+                    <div className={styles.aboutBookInfo}>
+                      {singleBook?.isbn13}
+                    </div>
+                  </div>
+                  <div className={styles.aboutBookContainer}>
+                    <div className={styles.aboutBook}>{"Year"}</div>
+                    <div className={styles.aboutBookInfo}>
+                      {singleBook?.year}
+                    </div>
+                  </div>
+                  <div className={styles.aboutBookContainer}>
+                    <div className={styles.aboutBook}>{"isbn10"}</div>
+                    <div className={styles.aboutBookInfo}>
+                      {singleBook?.isbn10}
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className={styles.buttonContainer}>
+                <Button
+                  type={ButtonType.Primary}
+                  onClick={onShowMoreDetailsButtonClick}
+                  title={"More detailse"}
+                  className={styles.button}
                 />
-              </div>
-            </div>
-            <div className={styles.aboutBookContainer}>
-              <div className={styles.aboutBook}>{"Authors"}</div>
-              <div className={styles.aboutBookInfo}>{singleBook?.authors} </div>
-            </div>
-            <div className={styles.aboutBookContainer}>
-              <div className={styles.aboutBook}>{"Publisher"}</div>
-              <div className={styles.aboutBookInfo}>
-                {singleBook?.publisher}
-              </div>
-            </div>
-            <div className={styles.aboutBookContainer}>
-              <div className={styles.aboutBook}>{"Pages"}</div>
-              <div className={styles.aboutBookInfo}>{singleBook?.pages} </div>
-            </div>
-            {showDetails && (
-              <div>
-                <div className={styles.aboutBookContainer}>
-                  <div className={styles.aboutBook}>{"isbn13"}</div>
-                  <div className={styles.aboutBookInfo}>
-                    {singleBook?.isbn13}
-                  </div>
-                </div>
-                <div className={styles.aboutBookContainer}>
-                  <div className={styles.aboutBook}>{"Year"}</div>
-                  <div className={styles.aboutBookInfo}>{singleBook?.year}</div>
-                </div>
-                <div className={styles.aboutBookContainer}>
-                  <div className={styles.aboutBook}>{"isbn10"}</div>
-                  <div className={styles.aboutBookInfo}>
-                    {singleBook?.isbn10}
-                  </div>
+                <div className={styles.interfaceIcon}>
+                  {!showDetails ? <InterfaceIcon /> : <InterfaceSecondIcon />}
                 </div>
               </div>
-            )}
-            <div className={styles.buttonContainer}>
               <Button
                 type={ButtonType.Primary}
-                onClick={onShowMoreDetailsButtonClick}
-                title={"More detailse"}
-                className={styles.button}
+                title={"add to cart"}
+                onClick={onClickAddToCart}
+                className={styles.secondButton}
               />
-              <div className={styles.interfaceIcon}>
-                {!showDetails ? <InterfaceIcon /> : <InterfaceSecondIcon />}
-              </div>
+              {pdfFile && (
+                <Button
+                  type={ButtonType.Primary}
+                  title={"Preview book"}
+                  onClick={onClickPreview}
+                  className={styles.thirdButton}
+                />
+              )}
             </div>
-            <Button
-              type={ButtonType.Primary}
-              title={"add to cart"}
-              onClick={onClickAddToCart}
-              className={styles.secondButton}
-            />
-            {pdfFile && (
-              <Button
-                type={ButtonType.Primary}
-                title={"Preview book"}
-                onClick={onClickPreview}
-                className={styles.thirdButton}
-              />
-            )}
           </div>
         </div>
-      </div>
-      <div>
-        <Tabs activeTab={activeTab} tabList={TABS_LIST} onClick={onTabClick} />
-        {activeTab === TabsNames.Description && (
-          <div className={styles.desc}>{singleBook?.desc}</div>
-        )}
-        {activeTab === TabsNames.Authors && (
-          <div className={styles.desc}>{singleBook?.authors}</div>
-        )}
-        {activeTab === TabsNames.Reviews && (
-          <div className={styles.desc}>{singleBook?.publisher}</div>
-        )}
-      </div>
-      <div className={styles.footer}>
         <div>
-          <FacebookIcon />
+          <Tabs
+            activeTab={activeTab}
+            tabList={TABS_LIST}
+            onClick={onTabClick}
+          />
+          {activeTab === TabsNames.Description && (
+            <div className={styles.desc}>{singleBook?.desc}</div>
+          )}
+          {activeTab === TabsNames.Authors && (
+            <div className={styles.desc}>{singleBook?.authors}</div>
+          )}
+          {activeTab === TabsNames.Reviews && (
+            <div className={styles.desc}>{singleBook?.publisher}</div>
+          )}
         </div>
-        <div>
-          <TwitterIcon />
+        <div className={styles.footer}>
+          <div>
+            <FacebookIcon />
+          </div>
+          <div>
+            <TwitterIcon />
+          </div>
+          <div>
+            <MoreIcon />
+          </div>
         </div>
-        <div>
-          <MoreIcon />
-        </div>
+        <Subscribe />
+        <BooksSlider title={"Similar Books"} />
+        <PreviewBookModal />
       </div>
-      <Subscribe />
-      <PreviewBookModal />
-    </div>
+    </>
   );
 };
 

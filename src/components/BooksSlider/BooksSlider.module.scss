@@ -1,0 +1,21 @@
+.text{
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 72px;
+  margin-bottom: 48px;
+}
+
+.allContent {
+  min-height: 50%;
+}
+.slide {
+  position: absolute;
+  display: flex;
+  gap: 30px;
+}

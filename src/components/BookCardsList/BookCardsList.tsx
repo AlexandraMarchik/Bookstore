@@ -12,7 +12,9 @@ const BookCardsList: FC<CardsListProps> = ({ cardsList }) => {
   return cardsList.length > 0 ? (
     <div className={styles.container}>
       {cardsList.map((item, index) => {
-        return <BookCard card={item} key={item.isbn13} />;
+        if(index> 0 && index <19) {
+          return <BookCard card={item} key={item.isbn13}/>;
+        }
       })}
     </div>
   ) : (

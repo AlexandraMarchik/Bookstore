@@ -3,4 +3,9 @@
   gap: 32px;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media screen and (max-width: 479px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

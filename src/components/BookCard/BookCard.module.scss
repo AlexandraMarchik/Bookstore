@@ -4,6 +4,15 @@
   width: 352px;
   height: 454px;
   margin-bottom: 20px;
+  @media screen and (max-width: 768px) {
+    width: 328px;
+    height: 454px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 272px;
+    height: 392px;
+    padding: 30px 40px;
+  }
 }
 .favouritesContainer {
   width: 100%;
@@ -63,7 +72,7 @@
   font-size: 24px;
   line-height: 32px;
   color: $primary;
-  min-height: 82px;
+  min-height: 80px;
 
   &:hover {
     cursor: pointer;
@@ -75,7 +84,6 @@
 }
 .favouritesTitle {
   min-height: 0px;
-
   margin-bottom: 8px;
 }
 .searchTitle {
@@ -88,6 +96,12 @@
   line-height: 24px;
   color: $secondary;
   min-height: 56px;
+  @media screen and (max-width: 768px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 272px;
+  }
 }
 .footer {
   display: flex;
@@ -109,18 +123,27 @@
     fill: $red;
   }
 }
-.closeIcon{
+.closeIcon {
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 100px;
+  @media screen and (max-width: 768px) {
+    gap: 30px;
+  }
 }
 .count {
   display: flex;
-  align-items: center;
-  gap: 30px;
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
 }
-.countNumber{
+.countContainer {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.countNumber {
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;

@@ -12,6 +12,7 @@ import {
   setDecrementItem,
   setIncrementItem,
 } from "src/redux/reducer/cartSlice";
+import {useMediaQuery} from "react-responsive";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13, quantity } = card;
@@ -26,6 +27,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const isCart = form === BookForm.Cart;
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const sumOneBookPrice = quantity * +price.substring(1);
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
 
   const onLikeIconClick = () => {
@@ -47,7 +49,6 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
       dispatch(setDecrementItem(isbn13));
     }
   };
-
 
   useEffect(() => {
     setColor(randomColor);
@@ -91,9 +92,11 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
               })}
               onClick={onTitleClick}
             >
-              {title}
+              {title.substring(0, 30).concat(" ...")}
             </div>
-            <div className={styles.subtitle}>{subtitle}</div>
+            <div className={styles.subtitle}>
+              {subtitle.substring(0, 70).concat(" ...")}
+            </div>
             <div
               className={classNames(styles.footer, {
                 [styles.favouritesFooter]: isFavourites,
@@ -104,12 +107,18 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             <div>
               {isCart && (
                 <div className={styles.count}>
+                  <div className={styles.countContainer}>
                   <div onClick={decrementCount}>
                     <MinusIcon />
                   </div>
                   <div className={styles.countNumber}>{quantity}</div>
                   <div onClick={incrementCount}>
                     <PlusIcon />
+                  </div>
+                  </div>
+                  <div>
+                  {isTablet && <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>
+                  }
                   </div>
                 </div>
               )}
@@ -123,7 +132,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
         )}
         {isCart && (
           <div onClick={onCloseIconClick} className={styles.closeIcon}>
-            <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>
+            { !isTablet && <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>}
             <CloseIconModal />
           </div>
         )}

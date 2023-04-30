@@ -4,6 +4,13 @@
   background-color: $purple;
   padding: 56px 64px;
   margin-top: 72px;
+  @media screen and (max-width: 768px) {
+    padding: 40px;
+  }
+  @media screen and (max-width: 479px) {
+    padding: 24px;
+    width: 272px;
+    }
 }
 .title {
   font-weight: 700;
@@ -18,12 +25,17 @@
   color: $secondary;
   margin-bottom: 25px;
 }
-.inputContainer{
+.inputContainer {
   position: relative;
-  width: 992px;
- }
+  @media screen and (max-width: 479px) {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+}
 
-.input{
+.input {
   border-radius: 2px;
   min-height: 56px;
   min-width: 992px;
@@ -31,6 +43,14 @@
   border: none;
   &::placeholder {
     color: $secondary;
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 608px;
+    min-height: 56px;
+  }
+  @media screen and (max-width: 479px) {
+   min-width: 224px;
+    background-color: red;
   }
 }
 
@@ -40,7 +60,9 @@
   top: 50%;
   cursor: pointer;
   transform: translateY(-50%);
-
+  @media screen and (max-width: 479px) {
+    position: static;
+    }
 }
 .buttonContainer {
   box-sizing: border-box;
@@ -56,4 +78,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 479px) {
+    width: 224px;
+  }
+
 }

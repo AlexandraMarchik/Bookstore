@@ -8,6 +8,7 @@ import BookCard from "src/components/BookCard";
 type SearchCardListProps = {
   cardsList: BookCartType[];
 };
+
 const SearchCardList: FC<SearchCardListProps> = ({ cardsList }) => {
   return cardsList?.length > 0 ? (
     <div className={styles.container}>

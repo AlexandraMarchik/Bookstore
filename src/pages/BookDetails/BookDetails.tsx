@@ -31,6 +31,7 @@ import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
 import { setCartList } from "src/redux/reducer/cartSlice";
 import BooksSlider from "src/components/BooksSlider";
+import {AuthUser} from "src/hooks/AuthUser";
 
 const TABS_LIST = [
   {
@@ -54,6 +55,7 @@ const BookDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { isbn13 } = params;
+  const {isAuth} = AuthUser()
 
   const singleBook = useSelector(BooksSelectors.getSingleBook);
   const pdfFile = !!singleBook?.pdf ? Object.values(singleBook?.pdf)[0] : null;
@@ -102,14 +104,14 @@ const BookDetails = () => {
         <div className={styles.bookInfoContainer}>
           <div className={styles.bookContainer}>
             <img src={singleBook?.image} className={styles.image}></img>
-            <div
-              className={classNames(styles.likeIcon, {
-                [styles.activeLikeIcon]: favoritesIndex > -1,
-              })}
-              onClick={onLikeIconClick}
+            {isAuth && <div
+                className={classNames(styles.likeIcon, {
+                  [styles.activeLikeIcon]: favoritesIndex > -1,
+                })}
+                onClick={onLikeIconClick}
             >
-              <LikeIcon />
-            </div>
+              <LikeIcon/>
+            </div>}
           </div>
           <div className={styles.descriptionContainer}>
             <div className={styles.descriptionInfoContainer}>

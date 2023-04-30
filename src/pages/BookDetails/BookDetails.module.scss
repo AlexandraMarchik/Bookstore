@@ -4,6 +4,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 72px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
 }
 .icon {
   border-radius: 10px;
@@ -19,6 +24,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    width: 688px;
+    height: 472px;
+  }
 }
 .likeIcon {
   position: absolute;
@@ -52,6 +61,19 @@
   height: 472px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    max-width: 688px;
+    height: 461px;
+    border-top: 1px solid $gray;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.descriptionInfoContainer{
+  @media screen and (max-width: 768px) {
+    width: 688px;
+    margin-top: 40px;
+  }
 }
 .priceContainer {
   display: flex;
@@ -95,7 +117,6 @@
     color: $secondary;
   }
 }
-
 .buttonContainer {
   position: relative;
   &:hover {
@@ -123,6 +144,11 @@
   align-items: center;
   justify-content: center;
   margin-top: 59px;
+  @media screen and (max-width: 768px) {
+    width: 687px;
+    height: 56px;
+  }
+
 }
 .thirdButton {
   background-color: $white;

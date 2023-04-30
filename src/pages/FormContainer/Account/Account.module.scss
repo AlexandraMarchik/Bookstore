@@ -3,12 +3,14 @@
 .container {
   display: flex;
   flex-direction: column;
-
 }
 .contentContainer {
   display: flex;
   flex-direction: column;
   align-items: end;
+  @media screen and (max-width: 768px) {
+    align-items: start;
+  }
 }
 .text {
   font-weight: 700;
@@ -22,6 +24,15 @@
   justify-content: space-between;
   gap: 32px;
   margin-top: 16px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+.input {
+  @media screen and (max-width: 768px) {
+    width: 688px;
+    height: 56px;
+  }
 }
 .passwordContainer {
   margin-top: 48px;
@@ -33,11 +44,14 @@
   display: flex;
   justify-content: space-between;
   gap: 32px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 .buttonContainer {
   display: flex;
   gap: 32px;
-  margin-top:48px ;
+  margin-top: 48px;
 }
 .saveButton {
   width: 257px;
@@ -45,17 +59,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    width: 328px;
+  }
 }
-.cancelButton{
+.cancelButton {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 257px;
   height: 56px;
   border: 1px solid $gray;
-  background-color:transparent;
+  background-color: transparent;
   color: $primary;
-  &:hover{
+  &:hover {
     background-color: $gray;
+  }
+  @media screen and (max-width: 768px) {
+    width: 328px;
   }
 }

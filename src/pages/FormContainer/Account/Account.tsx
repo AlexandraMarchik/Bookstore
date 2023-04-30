@@ -11,6 +11,7 @@ import {RoutesList} from "src/pages/Router";
 import { setPreviewBookVisibility} from "src/redux/reducer/booksSlice";
 import {useDispatch} from "react-redux";
 import SaveChangesModal from "src/pages/FormContainer/Account/SaveChangesModal";
+import {useMediaQuery} from "react-responsive";
 
 const Account = () => {
   const navigate = useNavigate()
@@ -18,6 +19,8 @@ const Account = () => {
 
   const { email } = AuthUser();
   const userName = localStorage.getItem("savedUserName");
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+
 
   const [name, setName] = useState(userName);
   const [userEmail, setUserEmail] = useState(email);
@@ -49,6 +52,7 @@ const Account = () => {
               type={"text"}
               onChange={onChangeName}
               title={"Name"}
+              inputClassName={styles.input}
             />
           )}
           {userEmail && (
@@ -57,6 +61,7 @@ const Account = () => {
               type={"text"}
               onChange={onChangeEmail}
               title={"Email"}
+              inputClassName={styles.input}
             />
           )}
         </div>
@@ -70,6 +75,7 @@ const Account = () => {
               type={"password"}
               onChange={() => {}}
               title={"Password"}
+              inputClassName={styles.input}
             />
           </div>
           <div className={styles.newPasswordInput}>
@@ -79,6 +85,7 @@ const Account = () => {
               onChange={() => {}}
               title={"New password"}
               placeholder={"New password"}
+              inputClassName={styles.input}
             />
             <Input
               value={userPassword}
@@ -86,6 +93,7 @@ const Account = () => {
               onChange={() => {}}
               title={"Confirm new password"}
               placeholder={"Confirm new password"}
+              inputClassName={styles.input}
             />
           </div>
         </div>

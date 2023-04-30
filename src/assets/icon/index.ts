@@ -20,4 +20,5 @@ export { PrevSliderArrowIcon } from "./PrevSliderArrowIcon";
 export { NextSliderArrowIcon } from "./NextSliderArrowIcon";
 export { StarIcon} from "./StarIcon";
 export { FillStarIcon} from "./FillStarIcon";
+export { BurgerIcon} from "./BurgerIcon";
 

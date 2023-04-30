@@ -7,10 +7,12 @@ import classNames from "classnames";
 import styles from "./BookDetails.module.scss";
 import {
   FacebookIcon,
+  FillStarIcon,
   InterfaceIcon,
   InterfaceSecondIcon,
   LikeIcon,
   MoreIcon,
+  StarIcon,
   TwitterIcon,
 } from "src/assets/icon";
 import Button from "src/components/Button";
@@ -28,7 +30,6 @@ import {
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
 import { setCartList } from "src/redux/reducer/cartSlice";
-import SimilarBooksSlider from "src/components/BooksSlider";
 import BooksSlider from "src/components/BooksSlider";
 
 const TABS_LIST = [
@@ -60,6 +61,7 @@ const BookDetails = () => {
   const favoritesIndex = favouritesList.findIndex(
     (books) => books.isbn13 === singleBook?.isbn13
   );
+  const rating = singleBook?.rating;
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
   const [showDetails, setShowDetails] = useState(false);
@@ -114,19 +116,21 @@ const BookDetails = () => {
               <div className={styles.priceContainer}>
                 <div className={styles.price}>{singleBook?.price}</div>
                 <div className={styles.rating}>
-                  <Rating
-                    readonly={true}
-                    initialValue={singleBook?.rating}
-                    SVGclassName={styles.icon}
-                    fillColor={"#313037"}
-                    emptyColor={"#E7E7E7"}
-                  />
+                  {rating && (
+                    <Rating
+                      readonly={true}
+                      initialValue={+rating}
+                      SVGclassName={styles.icon}
+                      emptyIcon={<StarIcon />}
+                      fillIcon={<FillStarIcon />}
+                    />
+                  )}
                 </div>
               </div>
               <div className={styles.aboutBookContainer}>
                 <div className={styles.aboutBook}>{"Authors"}</div>
                 <div className={styles.aboutBookInfo}>
-                  {singleBook?.authors}{" "}
+                  {singleBook?.authors}
                 </div>
               </div>
               <div className={styles.aboutBookContainer}>

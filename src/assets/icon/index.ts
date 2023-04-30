@@ -18,3 +18,6 @@ export { MinusIcon } from "./MinusIcon";
 export { CheckIcon } from "./CheckIcon";
 export { PrevSliderArrowIcon } from "./PrevSliderArrowIcon";
 export { NextSliderArrowIcon } from "./NextSliderArrowIcon";
+export { StarIcon} from "./StarIcon";
+export { FillStarIcon} from "./FillStarIcon";
+

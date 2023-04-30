@@ -6,6 +6,10 @@
   color: $primary;
   text-transform: uppercase;
   display: flex;
+  margin-bottom: 45px;
+}
+.searchResultsText{
+  margin-bottom: 0px;
 }
 .modalActive {
   background: rgba(38, 34, 47, 0.5);

@@ -35,7 +35,7 @@ const Search = () => {
   return (
     <div>
       <div className={styles.textContainer}>
-        '<Title title={searchValue} />' Search results
+        '<Title title={searchValue} className={styles.searchResultsText}/>' Search results
       </div>
       <div className={styles.countSearchedBooks}>Found {postsCount} books</div>
       {isLoading ? (
@@ -45,27 +45,29 @@ const Search = () => {
           <SearchCardList cardsList={cardList} />
         </>
       )}
+      {searchValue && (
         <div className={styles.pageContainer}>
-      <ReactPaginate
-        pageCount={pagesCount}
-        onPageChange={onPageChange}
-        containerClassName={styles.pagesContainer}
-        pageClassName={styles.pageNumber}
-        breakClassName={styles.pageNumber}
-        breakLinkClassName={styles.linkPage}
-        activeLinkClassName={styles.linkPage}
-        pageLinkClassName={styles.linkPage}
-        activeClassName={styles.activePageNumber}
-        nextClassName={classNames(styles.arrowButton, {
-          [styles.blockedButton]: currentPage === pagesCount,
-        })}
-        previousClassName={classNames(styles.arrowButton, {
-          [styles.blockedButton]: currentPage === 1,
-        })}
-        previousLinkClassName={styles.linkPage}
-        nextLinkClassName={styles.linkPage}
-      />
+          <ReactPaginate
+            pageCount={pagesCount}
+            onPageChange={onPageChange}
+            containerClassName={styles.pagesContainer}
+            pageClassName={styles.pageNumber}
+            breakClassName={styles.pageNumber}
+            breakLinkClassName={styles.linkPage}
+            activeLinkClassName={styles.linkPage}
+            pageLinkClassName={styles.linkPage}
+            activeClassName={styles.activePageNumber}
+            nextClassName={classNames(styles.arrowButton, {
+              [styles.blockedButton]: currentPage === pagesCount,
+            })}
+            previousClassName={classNames(styles.arrowButton, {
+              [styles.blockedButton]: currentPage === 1,
+            })}
+            previousLinkClassName={styles.linkPage}
+            nextLinkClassName={styles.linkPage}
+          />
         </div>
+      )}
     </div>
   );
 };

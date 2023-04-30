@@ -37,12 +37,13 @@ const SignIn = () => {
   const onSignInClick =(email:string, password:string)=>()=>{
     const auth = getAuth();
     signInWithEmailAndPassword(auth ,email,password)
-        .then(({user}) => {
+              .then(({user}) => {
           console.log(user);
           dispatch(setUser({
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            name:user.displayName
           }));
           navigate(RoutesList.Home)
         })
@@ -97,6 +98,7 @@ const SignIn = () => {
           <div >
             <Button
               title={"Sign In"}
+              disabled={!isValid}
               onClick={onSignInClick(email,password)}
               type={ButtonType.Primary}
               className={styles.button}

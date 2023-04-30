@@ -53,12 +53,12 @@ const SignUp = () => {
     console.log(auth);
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           setUser({
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            name:user.displayName
           })
         );
         navigate(RoutesList.Home);
@@ -157,6 +157,7 @@ const SignUp = () => {
           <div className={styles.button}>
             <Button
               title={"Sign Up"}
+              disabled={!isValid}
               onClick={onSignUpClick(email, password)}
               type={ButtonType.Primary}
               className={styles.btn}

@@ -4,11 +4,13 @@ import { RootState } from "../store";
 import { SetUserPayload } from "src/redux/reducer/@types";
 
 type InitialType = {
+  name:string| null;
   email: string | null;
   token: string | null;
   id: string | null;
 };
 const initialState: InitialType = {
+  name:null,
   email: null,
   token: null,
   id: null,
@@ -20,13 +22,15 @@ const userSlice = createSlice({
   reducers: {
     setUser: (
       state,
-      { payload: { email, token, id} }: PayloadAction<SetUserPayload>
+      { payload: { email, token, id,name} }: PayloadAction<SetUserPayload>
     ) => {
       state.email = email;
       state.token = token;
       state.id = id;
+      state.name = name
     },
     removeUser: (state) => {
+      state.name = null
       state.email = null;
       state.token = null;
       state.id = null;

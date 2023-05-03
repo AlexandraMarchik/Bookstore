@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "src/pages/Home";
 import PagesContainer from "src/pages/PagesContainer";
-import RegistrationPage from "src/pages/FormContainer/RegistrationPage";
+import Auth from "src/pages/FormContainer/Auth";
 import BookDetails from "src/pages/BookDetails";
 import Favorites from "src/pages/Favourites";
 import Search from "src/pages/Search";
@@ -24,9 +24,9 @@ export enum RoutesList {
   Search = "/search/:query/:page",
   Cart = "/cart",
   Account = "/user",
+  Reset = "/auth/reset",
+  NewPassword = "/auth/reset/new-password",
   Default = "*",
-  // ResetPassword = "/sign-in/reset-password",
-  // NewPassword = '/new-password'
 }
 const Router = () => {
 
@@ -39,7 +39,7 @@ const Router = () => {
             path={RoutesList.SingleBook}
             element={<BookDetails/>}
           />
-          <Route path={RoutesList.Auth} element={<RegistrationPage />} />
+          <Route path={RoutesList.Auth} element={<Auth />} />
           <Route path={RoutesList.Favorites} element={<Favorites />} />
           <Route path={RoutesList.Cart} element={<Cart />} />
           <Route path={RoutesList.Search} element={<Search />} />

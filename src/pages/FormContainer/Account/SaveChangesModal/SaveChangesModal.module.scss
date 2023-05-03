@@ -2,7 +2,6 @@
 
 .buttonContainer {
   display: flex;
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
@@ -12,10 +11,16 @@
   color: $primary;
   font-weight: 700;
   line-height: 32px;
+  @media screen and (max-width: 479px) {
+    font-size: 25px;
+  }
 }
 .cont{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 400px;
+  @media screen and (max-width: 479px) {
+    height: 175px;
+  }
 }

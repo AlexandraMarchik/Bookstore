@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./CheckOutModal.module.scss";
 import Modal from "src/components/Modal";
@@ -11,7 +12,6 @@ import { CheckIcon } from "src/assets/icon";
 import Button from "src/components/Button";
 import { ButtonType } from "src/components/Button/Button";
 import { RoutesList } from "src/pages/Router";
-import { useNavigate } from "react-router-dom";
 
 const CheckOutModal = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const CheckOutModal = () => {
   return (
     <Modal isVisible={isVisible} onClose={onClose}>
       <div className={styles.container}>
+        <div className={styles.icon}>
         <CheckIcon />
+        </div>
         <div className={styles.text}> Your order is complete!</div>
         <Button
           type={ButtonType.Primary}

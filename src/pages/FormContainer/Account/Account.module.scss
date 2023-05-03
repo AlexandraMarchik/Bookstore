@@ -11,6 +11,15 @@
   @media screen and (max-width: 768px) {
     align-items: start;
   }
+
+}
+.account{
+  @media screen and (max-width: 479px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .text {
   font-weight: 700;
@@ -33,6 +42,10 @@
     width: 688px;
     height: 56px;
   }
+  @media screen and (max-width: 479px) {
+    width: 350px;
+    height: 56px;
+  }
 }
 .passwordContainer {
   margin-top: 48px;
@@ -52,6 +65,9 @@
   display: flex;
   gap: 32px;
   margin-top: 48px;
+  @media screen and (max-width: 479px) {
+   flex-direction: column;
+  }
 }
 .saveButton {
   width: 257px;
@@ -61,6 +77,9 @@
   justify-content: center;
   @media screen and (max-width: 768px) {
     width: 328px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 350px;
   }
 }
 .cancelButton {
@@ -77,5 +96,8 @@
   }
   @media screen and (max-width: 768px) {
     width: 328px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 350px;
   }
 }

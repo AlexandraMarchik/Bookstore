@@ -1,5 +1,12 @@
 @import "src/assets/colors";
 
+.container {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .bookInfoContainer {
   display: flex;
   justify-content: space-between;
@@ -27,6 +34,16 @@
   @media screen and (max-width: 768px) {
     width: 688px;
     height: 472px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 272px;
+    height: 272px;
+  }
+}
+.image {
+  @media screen and (max-width: 479px) {
+    width: 150px;
+    height: 175px;
   }
 }
 .likeIcon {
@@ -65,14 +82,18 @@
     max-width: 688px;
     height: 461px;
     border-top: 1px solid $gray;
-    display: flex;
-    justify-content: space-between;
+  }
+  @media screen and (max-width: 479px) {
+    height: 70%;
   }
 }
-.descriptionInfoContainer{
+.descriptionInfoContainer {
   @media screen and (max-width: 768px) {
     width: 688px;
     margin-top: 40px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 271px;
   }
 }
 .priceContainer {
@@ -90,6 +111,10 @@
 .aboutBookContainer {
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 479px) {
+    justify-content: start;
+    flex-direction: column;
+      }
 }
 .aboutBook {
   font-weight: 400;
@@ -102,6 +127,14 @@
   align-items: end;
   justify-content: end;
   width: 40%;
+  @media screen and (max-width: 768px) {
+    width: 27%;
+  }
+  @media screen and (max-width: 479px) {
+    align-items: start;
+    justify-content: start;
+    width: 60%;
+  }
 }
 .button {
   text-transform: none;
@@ -117,6 +150,12 @@
     color: $secondary;
   }
 }
+.tabsContainer {
+  @media screen and (max-width: 479px) {
+    width: 350px;
+  }
+}
+
 .buttonContainer {
   position: relative;
   &:hover {
@@ -136,6 +175,10 @@
   display: flex;
   gap: 24px;
   margin-top: 48px;
+  @media screen and (max-width: 479px) {
+    align-items: start;
+    justify-content: start;
+  }
 }
 .secondButton {
   width: 448px;
@@ -146,9 +189,10 @@
   margin-top: 59px;
   @media screen and (max-width: 768px) {
     width: 687px;
-    height: 56px;
   }
-
+  @media screen and (max-width: 479px) {
+    width: 271px;
+  }
 }
 .thirdButton {
   background-color: $white;

@@ -1,24 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
 import { BookForm, CardProps } from "src/components/BookCard/types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
 import styles from "./BookCard.module.scss";
 import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
-import { setFavouritesBooks } from "src/redux/reducer/booksSlice";
+import {
+  BooksSelectors,
+  setFavouritesBooks,
+} from "src/redux/reducer/booksSlice";
 import {
   setCartList,
   setDecrementItem,
   setIncrementItem,
 } from "src/redux/reducer/cartSlice";
-import {useMediaQuery} from "react-responsive";
+import { useMediaQuery } from "react-responsive";
+import { AuthUser } from "src/hooks/AuthUser";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13, quantity } = card;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isAuth } = AuthUser();
 
   const [color, setColor] = useState("");
 
@@ -26,9 +31,13 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const isFavourites = form === BookForm.Favourite;
   const isCart = form === BookForm.Cart;
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
+  const favoritesIndex = favouritesList.findIndex(
+    (books) => books.isbn13 === card?.isbn13
+  );
   const sumOneBookPrice = quantity * +price.substring(1);
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-
+  const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
 
   const onLikeIconClick = () => {
     if (card) {
@@ -80,6 +89,24 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
                 [styles.imgFavourites]: isFavourites || isCart,
               })}
             ></img>
+            {isAuth && isMobile && isFavourites && (
+              <div
+                className={classNames(styles.likeIconSmallContainer, {
+                  [styles.activeLikeIcon]: favoritesIndex > -1,
+                })}
+                onClick={onLikeIconClick}
+              >
+                <LikeIcon />
+              </div>
+            )}
+            {isMobile && isCart && (
+              <div
+                className={styles.deleteBookFromCart}
+                onClick={onCloseIconClick}
+              >
+                <CloseIconModal />
+              </div>
+            )}
           </div>
           <div
             className={classNames(styles.textContainer, {
@@ -108,31 +135,36 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
               {isCart && (
                 <div className={styles.count}>
                   <div className={styles.countContainer}>
-                  <div onClick={decrementCount}>
-                    <MinusIcon />
-                  </div>
-                  <div className={styles.countNumber}>{quantity}</div>
-                  <div onClick={incrementCount}>
-                    <PlusIcon />
-                  </div>
+                    <div onClick={decrementCount}>
+                      <MinusIcon />
+                    </div>
+                    <div className={styles.countNumber}>{quantity}</div>
+                    <div onClick={incrementCount}>
+                      <PlusIcon />
+                    </div>
                   </div>
                   <div>
-                  {isTablet && <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>
-                  }
+                    {isTablet && (
+                      <div className={styles.price}>
+                        {sumOneBookPrice.toFixed(2)}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
             </div>
           </div>
         </div>
-        {isFavourites && (
+        {isFavourites && !isMobile && (
           <div className={styles.likeIcon} onClick={onLikeIconClick}>
             <LikeIcon />
           </div>
         )}
-        {isCart && (
+        {isCart && !isMobile && (
           <div onClick={onCloseIconClick} className={styles.closeIcon}>
-            { !isTablet && <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>}
+            {!isTablet && (
+              <div className={styles.price}>{sumOneBookPrice.toFixed(2)}</div>
+            )}
             <CloseIconModal />
           </div>
         )}

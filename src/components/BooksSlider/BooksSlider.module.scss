@@ -1,7 +1,12 @@
-.text{
+.text {
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
+  @media screen and (max-width: 479px) {
+    font-size: 28px;
+    line-height: 40px;
+    margin-right: 35px;
+  }
 }
 .buttonContainer {
   display: flex;
@@ -18,4 +23,7 @@
   position: absolute;
   display: flex;
   gap: 30px;
+  @media screen and (max-width: 479px) {
+    gap: 60px;
+  }
 }

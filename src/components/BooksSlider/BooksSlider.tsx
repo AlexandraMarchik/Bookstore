@@ -49,31 +49,11 @@ const BooksSlider = ({title}) => {
         <Slider style={{ height: 500 }}>
           <Slide index={0}>
             <div className={styles.slide}>
-              {booksList.map((item, index) => {
-                // if (index > 0 && index < 4) {
-                  return <BookCard card={item} key={item.isbn13} />;
-                // }
+              {booksList.map((item) => {
+                  return <BookCard card={item} key={item.isbn13} />
               })}
             </div>
           </Slide>
-          {/*<Slide index={1}>*/}
-          {/*  <div className={styles.slide}>*/}
-          {/*    {booksList.map((item, index) => {*/}
-          {/*      if (index > 3 && index < 7) {*/}
-          {/*        return <BookCard card={item} key={item.isbn13} />;*/}
-          {/*      }*/}
-          {/*    })}*/}
-          {/*  </div>*/}
-          {/*</Slide>*/}
-          {/*<Slide index={2}>*/}
-          {/*  <div className={styles.slide}>*/}
-          {/*    {booksList.map((item, index) => {*/}
-          {/*      if (index > 7 && index < 12) {*/}
-          {/*        return <BookCard card={item} key={item.isbn13} />;*/}
-          {/*      }*/}
-          {/*    })}*/}
-          {/*  </div>*/}
-          {/*</Slide>*/}
         </Slider>
       </CarouselProvider>
     </div>

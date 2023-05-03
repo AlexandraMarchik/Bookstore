@@ -17,7 +17,7 @@ const Subscribe = () => {
         Be the first to know about new IT books, upcoming releases, exclusive
         offers and more.
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainer} >
         <Input
           value={subscribeValue}
           type={"text"}

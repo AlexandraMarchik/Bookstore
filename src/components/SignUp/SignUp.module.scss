@@ -1,22 +1,27 @@
-@import 'src/assets/colors';
+@import "src/assets/colors";
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 32px;
+  @media screen and (max-width: 479px) {
+    justify-content: start;
+  }
 }
-.input{
+.input {
   width: 480px;
   height: 56px;
-
+  @media screen and (max-width: 479px) {
+    width: 330px;
+  }
 }
-.inp{
+.inp {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.btn{
+.btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +29,11 @@
   margin-top: 40px;
   width: 480px;
   line-height: 56px;
-  &:hover{
+  &:hover {
     background-color: $primary-secondary;
+  }
+  @media screen and (max-width: 479px) {
+    width: 330px;
+    font-size: 20px;
   }
 }

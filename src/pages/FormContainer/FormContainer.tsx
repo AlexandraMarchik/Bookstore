@@ -1,10 +1,10 @@
 import React, {FC, ReactNode} from "react";
 import {NavLink} from "react-router-dom";
 
+import styles from  './FormContainer.module.scss'
 import {RoutesList} from "src/pages/Router";
 import {BackArrowIcon} from "src/assets/icon";
 import Title from "src/components/Title";
-import styles from  './FormContainer.module.scss'
 
 type FormPContainerProps= {
     title: string,
@@ -14,7 +14,7 @@ const FormContainer:FC<FormPContainerProps> =({title})=>{
         <NavLink to={RoutesList.Home} className={styles.icon}>
             <BackArrowIcon />
         </NavLink>
-        <Title title={ title}/>
+        <Title title={ title} className={styles.text}/>
     </div>
 }
 

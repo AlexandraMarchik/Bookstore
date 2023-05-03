@@ -4,20 +4,22 @@
   display: flex;
   gap: 80px;
   border-bottom: 1px solid $gray;
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+  }
 }
 .tab {
-  padding:  0px 24px 40px;
+  padding: 0px 24px 40px;
   font-size: 16px;
   line-height: 24px;
   color: $secondary;
   &:hover {
     cursor: pointer;
     color: $primary;
-
   }
 }
 .activeTab {
-  color: $primary ;
+  color: $primary;
   border-bottom: 2px solid $primary-secondary;
 }
 .disabled {

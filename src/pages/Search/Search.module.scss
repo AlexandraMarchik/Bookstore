@@ -1,4 +1,6 @@
 @import "src/assets/colors";
+
+
 .textContainer {
   font-weight: 700;
   font-size: 56px;
@@ -7,14 +9,23 @@
   text-transform: uppercase;
   display: flex;
   margin-bottom: 45px;
+  @media screen and (max-width: 768px) {
+    font-size: 55px;
+  }
+  @media screen and (max-width: 479px) {
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 25px;
+  }
 }
-.searchResultsText{
+.searchResultsText {
   margin-bottom: 0px;
 }
+
 .modalActive {
   background: rgba(38, 34, 47, 0.5);
 }
-.pageContainer{
+.pageContainer {
   margin-top: 72px;
   border-top: 1px solid $gray;
   width: 100%;
@@ -82,4 +93,36 @@
   font-size: 16px;
   line-height: 24px;
   color: $secondary;
+}
+.searchInput {
+  margin: 56px 40px 48px;
+  position: relative;
+  @media screen and (max-width: 768px) {
+    margin: 0 0 40px 0;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.input {
+  width: 287px;
+  height: 56px;
+  @media screen and (max-width: 768px) {
+    width: 688px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 279px;
+  }
+}
+.searchBtn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-45%);
+  @media screen and (max-width: 479px) {
+   right: 20%;
+  }
 }

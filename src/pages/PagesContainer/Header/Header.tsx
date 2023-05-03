@@ -36,15 +36,13 @@ const Header = () => {
 
   const [searchValue, setSearchValue] = useState("");
   const [isOpened, setOpened] = useState(false);
-  const [isInputOpened, setInputOpened] = useState(false);
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.find((books) => books.isbn13);
   const cartList = useSelector(CartSelectors.getCartList);
   const cartIndex = cartList.find((books) => books.isbn13);
 
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+
 
   const navButtonsList = useMemo(
     () => [

@@ -18,6 +18,10 @@
   height: 500px;
   overflow: auto;
   padding: 0 20px;
+  @media screen and (max-width: 479px) {
+    min-width: 300px;
+    height: 250px;
+  }
 }
 .closeIcon{
   display: flex;
@@ -25,7 +29,4 @@
   justify-content: end;
   cursor: pointer;
   padding-top: 20px;
-}
-.infoContainer{
-
 }

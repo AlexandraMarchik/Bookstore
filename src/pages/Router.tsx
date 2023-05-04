@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -13,7 +13,8 @@ import Search from "src/pages/Search";
 import Cart from "src/pages/Cart";
 import NotFound from "src/pages/NotFound";
 import Account from "src/pages/FormContainer/Account";
-
+import ResetPassword from "src/pages/FormContainer/ResetPassword";
+import NewPassword from "src/pages/FormContainer/NewPassword";
 
 
 export enum RoutesList {
@@ -28,6 +29,7 @@ export enum RoutesList {
   NewPassword = "/auth/reset/new-password",
   Default = "*",
 }
+
 const Router = () => {
 
   return (
@@ -45,15 +47,8 @@ const Router = () => {
           <Route path={RoutesList.Search} element={<Search />} />
           <Route path={RoutesList.Default} element={<NotFound/>} />
           <Route path={RoutesList.Account} element={<Account/>} />
-
-          {/*<Route path={RoutesList.ResetPassword} element={<ResetPassword />} />*/}
-          {/*<Route path={RoutesList.NewPassword} element={<NewPassword />} />*/}
-          {/*<Route*/}
-          {/*  path={RoutesList.AddPost}*/}
-          {/*  element={*/}
-          {/*    isLoggedIn ? <AddPost /> : <Navigate to={RoutesList.SignIn} />*/}
-          {/*  }*/}
-          {/*/>*/}
+          <Route path={RoutesList.Reset} element={<ResetPassword/>} />
+          <Route path={RoutesList.NewPassword} element={<NewPassword/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -5,6 +5,10 @@ import { Rating } from "react-simple-star-rating";
 import classNames from "classnames";
 
 import styles from "./BookDetails.module.scss";
+import { ButtonType } from "src/components/Button/Button";
+import { TabsNames } from "src/utils/@globalTypes";
+import { setCartList } from "src/redux/reducer/cartSlice";
+import { AuthUser } from "src/hooks/AuthUser";
 import {
   FacebookIcon,
   FillStarIcon,
@@ -15,10 +19,9 @@ import {
   StarIcon,
   TwitterIcon,
 } from "src/assets/icon";
+import BooksSlider from "src/components/BooksSlider";
 import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
 import Tabs from "src/components/Tabs";
-import { TabsNames } from "src/utils/@globalTypes";
 import Subscribe from "src/components/Subscribe";
 import {
   BooksSelectors,
@@ -29,9 +32,6 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
-import { setCartList } from "src/redux/reducer/cartSlice";
-import BooksSlider from "src/components/BooksSlider";
-import { AuthUser } from "src/hooks/AuthUser";
 
 const TABS_LIST = [
   {

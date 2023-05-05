@@ -4,6 +4,7 @@
   background-color: $purple;
   padding: 56px 64px;
   margin-top: 72px;
+  box-sizing: border-box;
   @media screen and (max-width: 768px) {
     padding: 40px;
   }
@@ -34,6 +35,13 @@
     gap: 44px;
   }
 }
+
+.inputMobile{
+  @media screen and (max-width: 479px) {
+    width: 224px !important;
+    height: 56px;
+  }
+}
 .input {
   border-radius: 2px;
   min-height: 56px;
@@ -50,22 +58,14 @@
     min-width: 224px;
   }
 }
-.button {
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  cursor: pointer;
-  transform: translateY(-50%);
-  @media screen and (max-width: 479px) {
-    position: static;
-  }
-}
-.buttonContainer {
+
+
+.subButton {
   box-sizing: border-box;
   width: 147px;
   height: 56px;
   background: $primary;
-  border-radius: 0px 2px 2px 0px;
+  border-radius: 0 2px 2px 0;
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
@@ -74,7 +74,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
   @media screen and (max-width: 479px) {
     min-width: 224px;
+    position: static;
   }
 }

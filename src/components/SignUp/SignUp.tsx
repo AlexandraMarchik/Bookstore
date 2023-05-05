@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 
-import Input from "src/components/Input";
-import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
 import styles from "./SignUp.module.scss";
 import { setUser } from "src/redux/reducer/userSlice";
+import { ButtonType } from "src/components/Button/Button";
 import { RoutesList } from "src/pages/Router";
+import Input from "src/components/Input";
+import Button from "src/components/Button";
 
 const SignUp = () => {
   const dispatch = useDispatch();

@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 
+import styles from "./SignIn.module.scss";
+import { ButtonType } from "src/components/Button/Button";
+import { RoutesList } from "src/pages/Router";
+import { setUser } from "src/redux/reducer/userSlice";
 import Input from "src/components/Input";
 import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
-import styles from "./SignIn.module.scss";
-import { setUser } from "src/redux/reducer/userSlice";
-import { NavLink, useNavigate } from "react-router-dom";
-import { RoutesList } from "src/pages/Router";
 
 const SignIn = () => {
   const dispatch = useDispatch();

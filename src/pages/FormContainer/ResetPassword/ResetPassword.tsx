@@ -58,7 +58,8 @@ const ResetPassword = () => {
         <div className={styles.text}> reset password</div>
         {resetPassword && (
           <div className={styles.email}>
-            You will receive an email with a link to reset your password!
+            You will receive an email <span>{email}</span> with a link to reset
+            your password!
           </div>
         )}
         <div className={styles.inputContainer}>

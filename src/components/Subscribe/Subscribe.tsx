@@ -1,15 +1,20 @@
 import React, { useState } from "react";
+
 import styles from "./Subscribe.module.scss";
+import { ButtonType } from "src/components/Button/Button";
 import Input from "src/components/Input";
 import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
+import { useMediaQuery } from "react-responsive";
 
 const Subscribe = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
+
   const [subscribeValue, setSubscribeValue] = useState("");
 
   const onSubscribeClick = (value: string) => {
     setSubscribeValue(value);
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>Subscribe to Newsletter</div>
@@ -17,22 +22,31 @@ const Subscribe = () => {
         Be the first to know about new IT books, upcoming releases, exclusive
         offers and more.
       </div>
-      <div className={styles.inputContainer} >
-        <Input
-          value={subscribeValue}
-          type={"text"}
-          onChange={onSubscribeClick}
-          placeholder={"Your email"}
-          inputClassName={styles.input}
-        />
-        <div className={styles.button}>
-          <Button
-            title={"Subscribe"}
-            onClick={() => {}}
-            type={ButtonType.Primary}
-            className={styles.buttonContainer}
+      <div className={styles.inputContainer}>
+        {!isMobile && (
+          <Input
+            value={subscribeValue}
+            type={"text"}
+            onChange={onSubscribeClick}
+            placeholder={"Your email"}
+            inputClassName={styles.input}
           />
-        </div>
+        )}
+        {isMobile && (
+          <Input
+            value={subscribeValue}
+            type={"text"}
+            onChange={onSubscribeClick}
+            placeholder={"Your email"}
+            inputClassName={styles.inputMobile}
+          />
+        )}
+        <Button
+          title={"Subscribe"}
+          onClick={() => {}}
+          type={ButtonType.Primary}
+          className={styles.subButton}
+        />
       </div>
     </div>
   );

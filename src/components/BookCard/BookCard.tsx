@@ -2,8 +2,9 @@ import React, { FC, useEffect, useState } from "react";
 import { BookForm, CardProps } from "src/components/BookCard/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { useMediaQuery } from "react-responsive";
 import classNames from "classnames";
+
 import styles from "./BookCard.module.scss";
 import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
 import {
@@ -15,7 +16,6 @@ import {
   setDecrementItem,
   setIncrementItem,
 } from "src/redux/reducer/cartSlice";
-import { useMediaQuery } from "react-responsive";
 import { AuthUser } from "src/hooks/AuthUser";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {

@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   CarouselProvider,
   Slider,
@@ -9,12 +10,11 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 
 import styles from "./BooksSlider.module.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
 import BookCard from "src/components/BookCard";
 import { NextSliderArrowIcon, PrevSliderArrowIcon } from "src/assets/icon";
 
-const BooksSlider = ({title}) => {
+const BooksSlider = ({ title }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllBooks());
@@ -28,7 +28,7 @@ const BooksSlider = ({title}) => {
     <div className={styles.container}>
       <CarouselProvider
         visibleSlides={slideCount}
-        totalSlides={booksList.length/3}
+        totalSlides={booksList.length / 3}
         step={1}
         currentSlide={currentSlide}
         naturalSlideWidth={100}
@@ -50,7 +50,7 @@ const BooksSlider = ({title}) => {
           <Slide index={0}>
             <div className={styles.slide}>
               {booksList.map((item) => {
-                  return <BookCard card={item} key={item.isbn13} />
+                return <BookCard card={item} key={item.isbn13} />;
               })}
             </div>
           </Slide>

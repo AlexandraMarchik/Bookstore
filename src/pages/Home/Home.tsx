@@ -19,17 +19,19 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <Title title={"New Releases Books"} />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <BookCardsList cardsList={booksList} />
-        </>
-      )}
-      <Subscribe />
-    </div>
+      <div className={styles.container}>
+        <Title title={"New Releases Books"} />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <BookCardsList cardsList={booksList} />
+
+          </>
+        )}
+         <div> <Subscribe /></div>
+      </div>
+
   );
 };
 export default Home;

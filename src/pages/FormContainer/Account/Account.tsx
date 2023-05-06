@@ -12,6 +12,7 @@ import { setPreviewBookVisibility } from "src/redux/reducer/booksSlice";
 import { useDispatch } from "react-redux";
 import SaveChangesModal from "src/pages/FormContainer/Account/SaveChangesModal";
 import { useMediaQuery } from "react-responsive";
+import { removeUser } from "src/redux/reducer/userSlice";
 
 const Account = () => {
   const navigate = useNavigate();
@@ -20,11 +21,16 @@ const Account = () => {
   const { email } = AuthUser();
   const userName = localStorage.getItem("savedUserName");
   const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
   const [name, setName] = useState(userName);
   const [userEmail, setUserEmail] = useState(email);
   const [userPassword, setUserPassword] = useState("");
 
+  const onLogoutClick = () => {
+    dispatch(removeUser());
+    navigate(RoutesList.Auth)
+  };
   const onChangeEmail = (value: string) => {
     setUserEmail(value);
   };
@@ -98,13 +104,13 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div className={styles.contentContainer}>
-          <div className={styles.buttonContainer}>
+        <div className={styles.buttonContainer}>
+          <div className={styles.button}>
             <Button
               title={"Save changes"}
               type={ButtonType.Primary}
               onClick={onSaveChangesButtonClick}
-              className={styles.saveButton}
+              className={styles.accountButton}
             />
             <Button
               title={"cancel"}
@@ -113,9 +119,17 @@ const Account = () => {
               className={styles.cancelButton}
             />
           </div>
+          <div>
+            {!isMobile && !isTablet && <Button
+                title={"log out"}
+                type={ButtonType.Primary}
+                onClick={onLogoutClick}
+                className={styles.accountButton}
+            />}
+          </div>
         </div>
-        <SaveChangesModal />
       </div>
+      <SaveChangesModal />
     </div>
   );
 };

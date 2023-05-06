@@ -10,6 +10,7 @@ export type BookCardType = {
 export enum BookForm {
   Favourite,
   Cart,
+  Search
 }
 export type CardProps = {
   card: BookCartType;

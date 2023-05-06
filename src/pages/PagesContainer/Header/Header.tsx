@@ -1,10 +1,15 @@
-import React, { useState, KeyboardEvent, useMemo } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, KeyboardEvent, useMemo, useEffect } from "react";
 import { RoutesList } from "src/pages/Router";
+import { NavLink, useLocation, useMatch, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
+import classNames from "classnames";
 
 import styles from "./Header.module.scss";
+import { ButtonType } from "src/components/Button/Button";
+import { CartSelectors } from "src/redux/reducer/cartSlice";
+import { removeUser } from "src/redux/reducer/userSlice";
+import { AuthUser } from "src/hooks/AuthUser";
 import Input from "src/components/Input";
 import {
   BurgerIcon,
@@ -19,30 +24,29 @@ import {
 } from "src/assets/icon";
 import {
   BooksSelectors,
+  getSearchBooks,
   setSearchedValueBooks,
 } from "src/redux/reducer/booksSlice";
-import { CartSelectors } from "src/redux/reducer/cartSlice";
-import { AuthUser } from "src/hooks/AuthUser";
 import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
-import classNames from "classnames";
-import { removeUser } from "src/redux/reducer/userSlice";
+import SearchResultsList from "src/components/SearchResultsList";
 
 const Header = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const { isAuth } = AuthUser();
 
   const [searchValue, setSearchValue] = useState("");
   const [isOpened, setOpened] = useState(false);
+
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.find((books) => books.isbn13);
+  const searchResults = useSelector(BooksSelectors.getSearchedBooks);
   const cartList = useSelector(CartSelectors.getCartList);
   const cartIndex = cartList.find((books) => books.isbn13);
+  const searchPage = useMatch(RoutesList.Search);
 
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-
 
   const navButtonsList = useMemo(
     () => [
@@ -69,9 +73,17 @@ const Header = () => {
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onSearchButtonClick();
-      setOpened(!isOpened);
     }
   };
+
+  useEffect(() => {
+    dispatch(getSearchBooks({ query: searchValue, page: 1 }));
+    if (searchValue && !searchPage) {
+      return setOpened(true);
+    } else {
+      return setOpened(false);
+    }
+  }, [searchValue, searchPage]);
 
   const onSearchValue = (value: string) => {
     setSearchValue(value);
@@ -88,7 +100,6 @@ const Header = () => {
   const onSearchButtonClick = () => {
     dispatch(setSearchedValueBooks(searchValue));
     navigate(RoutesList.Search);
-    setOpened(!isOpened);
   };
   const onUserIconClick = () => {
     if (!isAuth) {
@@ -103,7 +114,6 @@ const Header = () => {
   const onLogoutClick = () => {
     dispatch(removeUser());
   };
-
   const onBurgerButtonClick = () => {
     return setOpened(!isOpened);
   };
@@ -136,8 +146,14 @@ const Header = () => {
             <div className={styles.searchBtn} onClick={onSearchButtonClick}>
               <SearchIcon />
             </div>
+            {isOpened && searchResults.length >= 0 && (
+              <div className={styles.searchBar} onClick={onCloseMenuClick}>
+                <SearchResultsList cardsList={searchResults} />
+              </div>
+            )}
           </div>
         )}
+
         <div className={styles.headerIcons}>
           {!isTablet && isAuth && (
             <div onClick={onLikeIconClick} className={styles.likeIcon}>

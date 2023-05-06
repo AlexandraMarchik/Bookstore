@@ -1,21 +1,21 @@
 import React, { KeyboardEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import classNames from "classnames";
-import ReactPaginate from "react-paginate";
 import { useMediaQuery } from "react-responsive";
+import ReactPaginate from "react-paginate";
+import classNames from "classnames";
 
 import styles from "./Search.module.scss";
-import Title from "src/components/Title";
-import SearchCardList from "src/components/SearchCardList/SearchCardList";
+import { CloseIconModal } from "src/assets/icon";
 import {
   BooksSelectors,
   getSearchBooks,
   setSearchedValueBooks,
 } from "src/redux/reducer/booksSlice";
+import Title from "src/components/Title";
+import SearchCardList from "src/components/SearchCardList/SearchCardList";
 import Loader from "src/components/Loader";
 import Input from "src/components/Input";
-import { CloseIconModal } from "src/assets/icon";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -23,12 +23,20 @@ const Search = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInputValue, setSearchInputValue] = useState("");
+
   const searchValue = useSelector(BooksSelectors.getSearchValue);
   const cardList = useSelector(BooksSelectors.getSearchedBooks);
   const isLoading = useSelector(BooksSelectors.getAllBooksLoading);
   const postsCount = useSelector(BooksSelectors.getTotalCount);
   const pagesCount = Math.ceil(+postsCount / 10);
+
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      onSearchButtonClick();
+    }
+  };
 
   useEffect(() => {
     dispatch(getSearchBooks({ query: searchValue, page: currentPage }));
@@ -37,14 +45,9 @@ const Search = () => {
     }
   }, [searchValue, currentPage]);
 
+
   const onPageChange = ({ selected }: { selected: number }) => {
     setCurrentPage(selected + 1);
-  };
-
-  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      onSearchButtonClick();
-    }
   };
   const onSearchButtonClick = () => {
     dispatch(setSearchedValueBooks(searchInputValue));

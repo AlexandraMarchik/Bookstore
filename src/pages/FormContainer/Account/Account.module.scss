@@ -4,16 +4,8 @@
   display: flex;
   flex-direction: column;
 }
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  @media screen and (max-width: 768px) {
-    align-items: start;
-  }
 
-}
-.account{
+.account {
   @media screen and (max-width: 479px) {
     display: flex;
     flex-direction: column;
@@ -63,13 +55,25 @@
 }
 .buttonContainer {
   display: flex;
-  gap: 32px;
-  margin-top: 48px;
+  margin-top: 55px;
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
   @media screen and (max-width: 479px) {
-   flex-direction: column;
+    flex-direction: column;
   }
 }
-.saveButton {
+.button {
+  display: flex;
+  gap: 32px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+.accountButton {
   width: 257px;
   height: 56px;
   display: flex;

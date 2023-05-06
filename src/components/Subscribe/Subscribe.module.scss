@@ -19,12 +19,20 @@
   line-height: 60px;
   color: $primary;
   margin-bottom: 15px;
+  @media screen and (max-width: 479px) {
+    font-size: 28px;
+    line-height: 40px;
+  }
 }
 .text {
   font-size: 18px;
   line-height: 28px;
   color: $secondary;
   margin-bottom: 25px;
+  @media screen and (max-width: 479px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 .inputContainer {
   position: relative;
@@ -36,7 +44,7 @@
   }
 }
 
-.inputMobile{
+.inputMobile {
   @media screen and (max-width: 479px) {
     width: 224px !important;
     height: 56px;
@@ -59,7 +67,6 @@
   }
 }
 
-
 .subButton {
   box-sizing: border-box;
   width: 147px;
@@ -79,8 +86,12 @@
   top: 50%;
   cursor: pointer;
   transform: translateY(-50%);
+  @media screen and (max-width: 768px) {
+    font-size: 18px !important;
+  }
   @media screen and (max-width: 479px) {
     min-width: 224px;
     position: static;
+    font-size: 18px !important;
   }
 }

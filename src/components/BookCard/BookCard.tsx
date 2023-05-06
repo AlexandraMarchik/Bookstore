@@ -1,22 +1,15 @@
-import React, { FC, useEffect, useState } from "react";
-import { BookForm, CardProps } from "src/components/BookCard/types";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import React, {FC, useEffect, useState} from "react";
+import {BookForm, CardProps} from "src/components/BookCard/types";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {useMediaQuery} from "react-responsive";
 import classNames from "classnames";
 
 import styles from "./BookCard.module.scss";
-import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
-import {
-  BooksSelectors,
-  setFavouritesBooks,
-} from "src/redux/reducer/booksSlice";
-import {
-  setCartList,
-  setDecrementItem,
-  setIncrementItem,
-} from "src/redux/reducer/cartSlice";
-import { AuthUser } from "src/hooks/AuthUser";
+import {CloseIconModal, LikeIcon, MinusIcon, PlusIcon} from "src/assets/icon";
+import {BooksSelectors, setFavouritesBooks,} from "src/redux/reducer/booksSlice";
+import {setCartList, setDecrementItem, setIncrementItem,} from "src/redux/reducer/cartSlice";
+import {AuthUser} from "src/hooks/AuthUser";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13, quantity } = card;
@@ -27,9 +20,11 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
 
   const [color, setColor] = useState("");
 
+
   const colors = ["#D7E4FD", "#CAEFF0", "#FEE9E2", "#F4EEFD"];
   const isFavourites = form === BookForm.Favourite;
   const isCart = form === BookForm.Cart;
+  const isSearchBar = form === BookForm.Search;
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const favouritesList = useSelector(BooksSelectors.getFavoritesBooks);
   const favoritesIndex = favouritesList.findIndex(
@@ -67,12 +62,14 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
     <>
       <div
         className={classNames(styles.container, {
-          [styles.favouritesContainer]: isFavourites || isCart,
+          [styles.favouritesContainer]: isFavourites || isCart ,
+          [styles.searchContainer] : isSearchBar
         })}
       >
         <div
           className={classNames(styles.rightContainer, {
             [styles.rightFavouritesContainer]: isFavourites || isCart,
+            [styles.rightSearchContainer] : isSearchBar
           })}
         >
           <div
@@ -81,12 +78,14 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             }}
             className={classNames(styles.imgContainer, {
               [styles.imgFifth]: isFavourites || isCart,
+              [styles.imgSearchFifth] : isSearchBar
             })}
           >
             <img
               src={image}
               className={classNames(styles.img, {
                 [styles.imgFavourites]: isFavourites || isCart,
+                [styles.imgSearch]: isSearchBar,
               })}
             ></img>
             {isAuth && isMobile && isFavourites && (
@@ -116,20 +115,21 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             <div
               className={classNames(styles.title, {
                 [styles.favouritesTitle]: isFavourites || isCart,
+                [styles.searchTitle]: isSearchBar,
               })}
               onClick={onTitleClick}
             >
               {title.substring(0, 30).concat(" ...")}
             </div>
-            <div className={styles.subtitle}>
+            {!isSearchBar && <div className={styles.subtitle}>
               {subtitle.substring(0, 70).concat(" ...")}
-            </div>
+            </div>}
             <div
               className={classNames(styles.footer, {
                 [styles.favouritesFooter]: isFavourites,
               })}
             >
-              {!isCart && <div className={styles.price}>{price}</div>}
+              {!isCart && !isSearchBar && <div className={styles.price}>{price}</div>}
             </div>
             <div>
               {isCart && (

@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 
 import styles from "./SearchCardList.module.scss";
-import { BookCartType } from "src/components/BookCard/types";
+import {BookCartType} from "src/utils/@globalTypes";
 import EmptyState from "src/components/EmptyState";
 import BookCard from "src/components/BookCard";
+
 
 type SearchCardListProps = {
   cardsList: BookCartType[];

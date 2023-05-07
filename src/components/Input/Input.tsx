@@ -2,19 +2,9 @@ import React, { ChangeEvent, FC, KeyboardEvent } from "react";
 import classNames from "classnames";
 
 import styles from "./Input.module.scss";
+import {InputProps} from "src/utils/@globalTypes";
 
-type InputProps = {
-  value: string;
-  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-  onChange: (value: string) => void;
-  title?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  errorText?: string;
-  type: string;
-  inputClassName?: string;
-  onBlur?: () => void
-};
+
 const Input: FC<InputProps> = ({
   type,
   value,

@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "../store";
-import { BookCartType } from "src/components/BookCard/types";
+import { SetSearchBooksPayload } from "src/redux/reducer/@types";
+import {BookCartType} from "src/utils/@globalTypes";
 import {
   SearchPaginationResponse,
   SingleBooksResponse,
 } from "src/redux/sagas/@types";
-import { SetSearchBooksPayload } from "src/redux/reducer/@types";
+
 
 type InitialType = {
   booksList: BookCartType[];

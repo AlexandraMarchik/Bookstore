@@ -114,7 +114,7 @@
   @media screen and (max-width: 479px) {
     justify-content: start;
     flex-direction: column;
-      }
+  }
 }
 .aboutBook {
   font-weight: 400;
@@ -151,8 +151,8 @@
   }
 }
 .tabsContainer {
-  @media screen and (max-width: 479px) {
-    width: 350px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 }
 

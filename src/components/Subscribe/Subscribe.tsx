@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import styles from "./Subscribe.module.scss";
 import { ButtonType } from "src/components/Button/Button";
+import { useMediaQuery } from "react-responsive";
 import Input from "src/components/Input";
 import Button from "src/components/Button";
-import { useMediaQuery } from "react-responsive";
 
 const Subscribe = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 479px)" });

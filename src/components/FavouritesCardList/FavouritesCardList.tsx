@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 
 import styles from "./FavouritesCardList.module.scss";
+import { BookCartType } from "src/utils/@globalTypes";
+import { BookForm } from "src/components/BookCard/types";
 import EmptyState from "src/components/EmptyState";
-import { BookCartType, BookForm} from "src/components/BookCard/types";
 import BookCard from "src/components/BookCard";
 
 type FavouritesCardListProps = {
   booksList: BookCartType[];
 };
 const FavouritesCardList: FC<FavouritesCardListProps> = ({ booksList }) => {
-
   return booksList.length > 0 ? (
     <div className={styles.container}>
       {booksList.map((item, index) => {

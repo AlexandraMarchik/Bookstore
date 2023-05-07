@@ -1,35 +1,37 @@
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import styles from "./Account.module.scss";
-import FormContainer from "src/pages/FormContainer";
-import Input from "src/components/Input";
-import { AuthUser } from "src/hooks/AuthUser";
-import Button from "src/components/Button";
+
 import { ButtonType } from "src/components/Button/Button";
-import { useNavigate } from "react-router-dom";
 import { RoutesList } from "src/pages/Router";
+import { AuthUser } from "src/hooks/AuthUser";
 import { setPreviewBookVisibility } from "src/redux/reducer/booksSlice";
-import { useDispatch } from "react-redux";
-import SaveChangesModal from "src/pages/FormContainer/Account/SaveChangesModal";
-import { useMediaQuery } from "react-responsive";
 import { removeUser } from "src/redux/reducer/userSlice";
+import SaveChangesModal from "src/pages/FormContainer/Account/SaveChangesModal";
+import FormContainer from "src/pages/FormContainer";
+import Button from "src/components/Button";
+import Input from "src/components/Input";
 
 const Account = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { email } = AuthUser();
+
   const userName = localStorage.getItem("savedUserName");
-  const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
   const [name, setName] = useState(userName);
   const [userEmail, setUserEmail] = useState(email);
   const [userPassword, setUserPassword] = useState("");
 
+  const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+
   const onLogoutClick = () => {
     dispatch(removeUser());
-    navigate(RoutesList.Auth)
+    navigate(RoutesList.Auth);
   };
   const onChangeEmail = (value: string) => {
     setUserEmail(value);
@@ -40,7 +42,6 @@ const Account = () => {
   const onSaveChangesButtonClick = () => {
     dispatch(setPreviewBookVisibility(true));
   };
-
   const onCancelButtonClick = () => {
     navigate(RoutesList.Home);
   };
@@ -120,12 +121,14 @@ const Account = () => {
             />
           </div>
           <div>
-            {!isMobile && !isTablet && <Button
+            {!isMobile && !isTablet && (
+              <Button
                 title={"log out"}
                 type={ButtonType.Primary}
                 onClick={onLogoutClick}
                 className={styles.accountButton}
-            />}
+              />
+            )}
           </div>
         </div>
       </div>

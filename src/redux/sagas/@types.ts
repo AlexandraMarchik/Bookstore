@@ -1,4 +1,4 @@
-import { BookCartType } from "src/components/BookCard/types";
+import { BookCartType } from "src/utils/@globalTypes";
 
 export type AllBooksResponse = {
   total: string;

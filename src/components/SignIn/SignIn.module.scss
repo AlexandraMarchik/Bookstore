@@ -15,6 +15,9 @@
   @media screen and (max-width: 479px) {
     width: 330px;
   }
+  @media screen and (max-width: 426px) {
+    width: 290px;
+  }
 }
 .inp{
   display: flex;
@@ -32,7 +35,9 @@
   @media screen and (max-width: 479px) {
     width: 330px;
     font-size: 20px;
-
+  }
+  @media screen and (max-width: 426px) {
+    width: 290px;
   }
 }
 .forgotPassword{

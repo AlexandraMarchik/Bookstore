@@ -11,8 +11,8 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 
 import styles from "./BooksSlider.module.scss";
 import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
-import BookCard from "src/components/BookCard";
 import { NextSliderArrowIcon, PrevSliderArrowIcon } from "src/assets/icon";
+import BookCard from "src/components/BookCard";
 
 const BooksSlider = ({ title }) => {
   const dispatch = useDispatch();

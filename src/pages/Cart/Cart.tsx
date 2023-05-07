@@ -16,8 +16,9 @@ import CheckOutModal from "src/pages/Cart/CheckOutModal";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const cartList = useSelector(CartSelectors.getCartList);
   const { isAuth } = AuthUser();
+
+  const cartList = useSelector(CartSelectors.getCartList);
   const singleBook = useSelector(BooksSelectors.getSingleBook);
 
   const sumTotal = cartList

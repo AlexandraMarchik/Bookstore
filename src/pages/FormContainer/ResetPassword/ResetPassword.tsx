@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import styles from "./ResetPassword.module.scss";
-import Input from "src/components/Input";
-import Button from "src/components/Button";
 import { ButtonType } from "src/components/Button/Button";
 import { RoutesList } from "src/pages/Router";
+import Input from "src/components/Input";
+import Button from "src/components/Button";
+
 
 const ResetPassword = () => {
   const navigate = useNavigate();

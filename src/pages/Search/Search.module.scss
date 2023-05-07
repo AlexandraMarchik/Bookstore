@@ -1,6 +1,5 @@
 @import "src/assets/colors";
 
-
 .textContainer {
   font-weight: 700;
   font-size: 56px;
@@ -17,11 +16,19 @@
     line-height: 44px;
     margin-bottom: 25px;
   }
+  @media screen and (max-width: 426px) {
+    font-size: 25px;
+    line-height: 44px;
+    margin-bottom: 25px;
+  }
 }
 .searchResultsText {
   margin-bottom: 0px;
-}
+  @media screen and (max-width: 426px) {
+    font-size: 25px;
 
+  }
+}
 .modalActive {
   background: rgba(38, 34, 47, 0.5);
 }
@@ -100,7 +107,7 @@
   @media screen and (max-width: 768px) {
     margin: 0 0 40px 0;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 479px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,6 +130,9 @@
   cursor: pointer;
   transform: translateY(-45%);
   @media screen and (max-width: 479px) {
-   right: 20%;
+    right: 20%;
+  }
+  @media screen and (max-width: 321px) {
+    right: 5%;
   }
 }

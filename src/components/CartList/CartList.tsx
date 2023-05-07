@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 
 import styles from "./CartList.module.scss";
-import {BookCartType, BookForm} from "src/components/BookCard/types";
+import {BookCartType} from "src/utils/@globalTypes";
+import { BookForm} from "src/components/BookCard/types";
 import EmptyState from "src/components/EmptyState";
 import BookCard from "src/components/BookCard";
 

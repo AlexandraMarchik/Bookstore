@@ -1,7 +1,8 @@
-import React, {FC, useState} from "react";
+import React, { FC } from "react";
 
 import styles from "./SearchResultsList.module.scss";
-import {BookCartType, BookForm} from "src/components/BookCard/types";
+import { BookForm } from "src/components/BookCard/types";
+import { BookCartType } from "src/utils/@globalTypes";
 import BookCard from "src/components/BookCard";
 
 type SearchCardListProps = {
@@ -12,7 +13,9 @@ const SearchResultsList: FC<SearchCardListProps> = ({ cardsList }) => {
   return cardsList?.length > 0 ? (
     <div className={styles.resultsList}>
       {cardsList.map((result, id) => {
-        return <BookCard card={result} key={result.isbn13} form={BookForm.Search} />;
+        return (
+          <BookCard card={result} key={result.isbn13} form={BookForm.Search} />
+        );
       })}
     </div>
   ) : null;

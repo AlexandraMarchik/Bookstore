@@ -3,10 +3,10 @@ import { getAuth, confirmPasswordReset } from "firebase/auth";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import styles from "./NewPassword.module.scss";
-import Input from "src/components/Input";
-import Button from "src/components/Button";
 import { ButtonType } from "src/components/Button/Button";
 import { RoutesList } from "src/pages/Router";
+import Input from "src/components/Input";
+import Button from "src/components/Button";
 
 const NewPassword = () => {
   const navigate = useNavigate();

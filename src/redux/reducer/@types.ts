@@ -1,11 +1,12 @@
-import {BookCardType, BookCartType} from "src/components/BookCard/types";
+import {BookCartType} from "src/utils/@globalTypes";
+
 
 export type SetSearchBooksPayload = {
   booksList: BookCartType[];
   booksCount: string;
 };
 export type SetUserPayload = {
-  name:string | null;
+  name: string | null;
   email: string | null;
   token: string | null;
   id: string | null;

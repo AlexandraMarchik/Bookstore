@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
 import styles from "./Home.module.scss";
+import { BooksSelectors, getAllBooks } from "src/redux/reducer/booksSlice";
 import Title from "../../components/Title";
 import BookCardsList from "../../components/BookCardsList";
 import Subscribe from "src/components/Subscribe";

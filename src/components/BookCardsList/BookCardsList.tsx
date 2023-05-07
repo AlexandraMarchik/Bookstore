@@ -2,8 +2,9 @@ import React, { FC } from "react";
 import BookCard from "../BookCard";
 
 import styles from "./BookCardsList.module.scss";
+import {BookCartType} from "src/utils/@globalTypes";
 import EmptyState from "src/components/EmptyState";
-import { BookCartType } from "src/components/BookCard/types";
+
 
 type CardsListProps = {
   cardsList: BookCartType[];

@@ -35,13 +35,13 @@
     width: 688px;
     height: 472px;
   }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     width: 272px;
     height: 272px;
   }
 }
 .image {
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     width: 150px;
     height: 175px;
   }
@@ -83,7 +83,7 @@
     height: 461px;
     border-top: 1px solid $gray;
   }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     height: 70%;
   }
 }
@@ -92,7 +92,7 @@
     width: 688px;
     margin-top: 40px;
   }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     width: 271px;
   }
 }
@@ -111,7 +111,7 @@
 .aboutBookContainer {
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     justify-content: start;
     flex-direction: column;
   }
@@ -130,7 +130,7 @@
   @media screen and (max-width: 768px) {
     width: 27%;
   }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     align-items: start;
     justify-content: start;
     width: 60%;
@@ -177,7 +177,7 @@
   display: flex;
   gap: 24px;
   margin-top: 48px;
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     align-items: start;
     justify-content: start;
   }
@@ -192,7 +192,7 @@
   @media screen and (max-width: 768px) {
     width: 687px;
   }
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 426px) {
     width: 271px;
   }
 }

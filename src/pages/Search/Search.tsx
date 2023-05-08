@@ -31,6 +31,7 @@ const Search = () => {
   const pagesCount = Math.ceil(+postsCount / 10);
 
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 479px)" });
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -44,7 +45,6 @@ const Search = () => {
       navigate(`/search/${searchValue}/${currentPage}`);
     }
   }, [searchValue, currentPage]);
-
 
   const onPageChange = ({ selected }: { selected: number }) => {
     setCurrentPage(selected + 1);
@@ -90,7 +90,7 @@ const Search = () => {
           <SearchCardList cardsList={cardList} />
         </>
       )}
-      {searchValue && (
+      {searchValue && !isMobile && (
         <div className={styles.pageContainer}>
           <ReactPaginate
             pageCount={pagesCount}

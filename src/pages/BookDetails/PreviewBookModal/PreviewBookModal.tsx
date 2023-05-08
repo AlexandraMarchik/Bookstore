@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 
 import styles from "./PreviewBookModal.module.scss";
+import { ButtonType } from "src/components/Button/Button";
 import Modal from "../../../components/Modal";
 import {
   BooksSelectors,
@@ -10,11 +11,12 @@ import {
   setPreviewBookVisibility,
 } from "src/redux/reducer/booksSlice";
 import Button from "src/components/Button";
-import { ButtonType } from "src/components/Button/Button";
+
 
 
 const PreviewBookModal = () => {
   const dispatch = useDispatch();
+
   const isVisible = useSelector(BooksSelectors.getVisibleModal);
   const previewBook = useSelector(BooksSelectors.getPreviewBook);
 

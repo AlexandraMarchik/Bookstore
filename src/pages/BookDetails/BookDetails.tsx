@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Rating } from "react-simple-star-rating";
+import { CarouselProvider } from "pure-react-carousel";
 import classNames from "classnames";
 
 import styles from "./BookDetails.module.scss";
@@ -32,6 +33,7 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
+
 
 const TABS_LIST = [
   {
@@ -67,6 +69,8 @@ const BookDetails = () => {
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
   const [showDetails, setShowDetails] = useState(false);
+  const [slideCount, setSlideCount] = useState(2);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const onLikeIconClick = () => {
     if (singleBook) {
@@ -173,7 +177,7 @@ const BookDetails = () => {
                 <Button
                   type={ButtonType.Primary}
                   onClick={onShowMoreDetailsButtonClick}
-                  title={"More detailse"}
+                  title={"More details"}
                   className={styles.button}
                 />
                 <div className={styles.interfaceIcon}>
@@ -226,9 +230,25 @@ const BookDetails = () => {
             </div>
           </div>
           <Subscribe />
-          <BooksSlider title={"Similar Books"} />
-          <PreviewBookModal />
+          <div className={styles.carouselContainer}>
+            <CarouselProvider
+              visibleSlides={slideCount}
+              totalSlides={6}
+              step={1}
+              currentSlide={currentSlide}
+              naturalSlideWidth={100}
+              naturalSlideHeight={125}
+              isIntrinsicHeight={true}
+            >
+              <BooksSlider
+                title={"Similar Books"}
+                setSlideCount={setSlideCount}
+                setCurrentSlide={setCurrentSlide}
+              />
+            </CarouselProvider>
+          </div>
         </div>
+        <PreviewBookModal />
       </div>
     </>
   );

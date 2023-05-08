@@ -9,15 +9,34 @@
   width: 100%;
   border-bottom: 2px solid $gray;
 }
+
 .searchInput {
   position: relative;
+}
+
+.searchBarContainer {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .searchBar {
   position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 544px;
+  top: 280px;
+  left: 34%;
+  cursor: pointer;
+  transform: translateY(-45%);
+  @media screen and (max-width: 2561px) and (min-width: 2000px) {
+    left: 40%;
+  }
+  @media screen and (max-width: 1441px) {
+    left: 34%;
+  }
 }
 .input {
   min-height: 56px;
@@ -28,6 +47,7 @@
     color: $secondary;
   }
 }
+
 .searchBtn {
   position: absolute;
   right: 16px;

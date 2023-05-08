@@ -151,11 +151,13 @@
   }
 }
 .tabsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   @media screen and (max-width: 768px) {
     width: 100%;
   }
 }
-
 .buttonContainer {
   position: relative;
   &:hover {
@@ -209,5 +211,10 @@
     cursor: pointer;
     text-decoration: underline;
     background-color: $white;
+  }
+}
+.carouselContainer {
+  @media screen and (max-width: 479px) {
+    width: 296px;
   }
 }

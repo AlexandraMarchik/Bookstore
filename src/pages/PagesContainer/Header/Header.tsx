@@ -147,13 +147,17 @@ const Header = () => {
               <SearchIcon />
             </div>
             {isOpened && searchResults.length >= 0 && (
-              <div className={styles.searchBar} onClick={onCloseMenuClick}>
-                <SearchResultsList cardsList={searchResults} />
+              <div
+                className={styles.searchBarContainer}
+                onClick={onCloseMenuClick}
+              >
+                <div className={styles.searchBar}>
+                  <SearchResultsList cardsList={searchResults} />
+                </div>
               </div>
             )}
           </div>
         )}
-
         <div className={styles.headerIcons}>
           {!isTablet && isAuth && (
             <div onClick={onLikeIconClick} className={styles.likeIcon}>

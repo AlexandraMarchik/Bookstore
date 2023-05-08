@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 import styles from "./BookCard.module.scss";
 import {CloseIconModal, LikeIcon, MinusIcon, PlusIcon} from "src/assets/icon";
-import {BooksSelectors, setFavouritesBooks,} from "src/redux/reducer/booksSlice";
+import {BooksSelectors, getSingleBook, setFavouritesBooks,} from "src/redux/reducer/booksSlice";
 import {setCartList, setDecrementItem, setIncrementItem,} from "src/redux/reducer/cartSlice";
 import {AuthUser} from "src/hooks/AuthUser";
 
@@ -43,6 +43,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
     dispatch(setCartList(card));
   };
   const onTitleClick = () => {
+    dispatch(getSingleBook(isbn13))
     navigate(`/books/${isbn13}`);
   };
   const incrementCount = () => {
@@ -80,6 +81,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
               [styles.imgFifth]: isFavourites || isCart,
               [styles.imgSearchFifth] : isSearchBar
             })}
+            onClick={onTitleClick}
           >
             <img
               src={image}

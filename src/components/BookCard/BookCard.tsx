@@ -1,15 +1,23 @@
-import React, {FC, useEffect, useState} from "react";
-import {BookForm, CardProps} from "src/components/BookCard/types";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useMediaQuery} from "react-responsive";
+import React, { FC, useEffect, useState } from "react";
+import { BookForm, CardProps } from "src/components/BookCard/types";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import classNames from "classnames";
 
 import styles from "./BookCard.module.scss";
-import {CloseIconModal, LikeIcon, MinusIcon, PlusIcon} from "src/assets/icon";
-import {BooksSelectors, getSingleBook, setFavouritesBooks,} from "src/redux/reducer/booksSlice";
-import {setCartList, setDecrementItem, setIncrementItem,} from "src/redux/reducer/cartSlice";
-import {AuthUser} from "src/hooks/AuthUser";
+import { CloseIconModal, LikeIcon, MinusIcon, PlusIcon } from "src/assets/icon";
+import {
+  BooksSelectors,
+  getSingleBook,
+  setFavouritesBooks,
+} from "src/redux/reducer/booksSlice";
+import {
+  setCartList,
+  setDecrementItem,
+  setIncrementItem,
+} from "src/redux/reducer/cartSlice";
+import { AuthUser } from "src/hooks/AuthUser";
 
 const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { image, title, subtitle, price, isbn13, quantity } = card;
@@ -19,7 +27,6 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const { isAuth } = AuthUser();
 
   const [color, setColor] = useState("");
-
 
   const colors = ["#D7E4FD", "#CAEFF0", "#FEE9E2", "#F4EEFD"];
   const isFavourites = form === BookForm.Favourite;
@@ -42,8 +49,8 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
   const onCloseIconClick = () => {
     dispatch(setCartList(card));
   };
-  const onTitleClick = () => {
-    dispatch(getSingleBook(isbn13))
+  const onBookClick = () => {
+    dispatch(getSingleBook(isbn13));
     navigate(`/books/${isbn13}`);
   };
   const incrementCount = () => {
@@ -63,14 +70,15 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
     <>
       <div
         className={classNames(styles.container, {
-          [styles.favouritesContainer]: isFavourites || isCart ,
-          [styles.searchContainer] : isSearchBar
+          [styles.favouritesContainer]: isFavourites || isCart,
+          [styles.searchContainer]: isSearchBar,
         })}
+        onClick={onBookClick}
       >
         <div
           className={classNames(styles.rightContainer, {
             [styles.rightFavouritesContainer]: isFavourites || isCart,
-            [styles.rightSearchContainer] : isSearchBar
+            [styles.rightSearchContainer]: isSearchBar,
           })}
         >
           <div
@@ -79,9 +87,8 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             }}
             className={classNames(styles.imgContainer, {
               [styles.imgFifth]: isFavourites || isCart,
-              [styles.imgSearchFifth] : isSearchBar
+              [styles.imgSearchFifth]: isSearchBar,
             })}
-            onClick={onTitleClick}
           >
             <img
               src={image}
@@ -119,19 +126,22 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
                 [styles.favouritesTitle]: isFavourites || isCart,
                 [styles.searchTitle]: isSearchBar,
               })}
-              onClick={onTitleClick}
             >
               {title.substring(0, 30).concat(" ...")}
             </div>
-            {!isSearchBar && <div className={styles.subtitle}>
-              {subtitle.substring(0, 70).concat(" ...")}
-            </div>}
+            {!isSearchBar && (
+              <div className={styles.subtitle}>
+                {subtitle.substring(0, 70).concat(" ...")}
+              </div>
+            )}
             <div
               className={classNames(styles.footer, {
                 [styles.favouritesFooter]: isFavourites,
               })}
             >
-              {!isCart && !isSearchBar && <div className={styles.price}>{price}</div>}
+              {!isCart && !isSearchBar && (
+                <div className={styles.price}>{price}</div>
+              )}
             </div>
             <div>
               {isCart && (

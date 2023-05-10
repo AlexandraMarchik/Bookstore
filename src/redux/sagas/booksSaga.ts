@@ -5,7 +5,8 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 import API from "../api";
 import {
   AllBooksResponse,
-  SearchBooksResponse, SearchPaginationResponse,
+  SearchBooksResponse,
+  SearchPaginationResponse,
   SingleBooksResponse,
 } from "./@types";
 import {
@@ -32,6 +33,7 @@ function* getAllBooksWorker() {
 }
 
 function* getSinglePostWorker(action: PayloadAction<string>) {
+  yield put(setBooksLoading(true));
   const { ok, data, problem }: ApiResponse<SingleBooksResponse> = yield call(
     API.getSingleBook,
     action.payload
@@ -41,25 +43,28 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
   } else {
     console.warn("Error getting single book page", problem);
   }
+  yield put(setBooksLoading(false));
 }
 
-function* getSearchedBooksWorker(action:PayloadAction<SearchPaginationResponse>){
+function* getSearchedBooksWorker(
+  action: PayloadAction<SearchPaginationResponse>
+) {
   yield put(setBooksLoading(true));
-  const { page, query  } = action.payload
+  const { page, query } = action.payload;
   const { ok, data, problem }: ApiResponse<SearchBooksResponse> = yield call(
-    API.getSearchBooks,page ,query
+    API.getSearchBooks,
+    page,
+    query
   );
   if (ok && data) {
     yield put(
-      setSearchBooks({ booksList: data.books, booksCount: data.total})
+      setSearchBooks({ booksList: data.books, booksCount: data.total })
     );
   } else {
     console.warn("Error getting all posts", problem);
   }
   yield put(setBooksLoading(false));
 }
-
-
 
 export default function* booksSaga() {
   yield all([

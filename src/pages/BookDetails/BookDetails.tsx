@@ -33,7 +33,7 @@ import {
 } from "src/redux/reducer/booksSlice";
 import FormContainer from "src/pages/FormContainer";
 import PreviewBookModal from "src/pages/BookDetails/PreviewBookModal";
-
+import Loader from "src/components/Loader";
 
 const TABS_LIST = [
   {
@@ -65,6 +65,8 @@ const BookDetails = () => {
   const favoritesIndex = favouritesList.findIndex(
     (books) => books.isbn13 === singleBook?.isbn13
   );
+  const isLoading = useSelector(BooksSelectors.getAllBooksLoading);
+
   const rating = singleBook?.rating;
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);

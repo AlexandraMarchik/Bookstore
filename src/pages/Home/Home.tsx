@@ -26,10 +26,9 @@ const Home = () => {
         ) : (
           <>
             <BookCardsList cardsList={booksList} />
-
           </>
         )}
-         <div> <Subscribe /></div>
+         <div><Subscribe /></div>
       </div>
 
   );

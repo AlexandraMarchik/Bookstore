@@ -73,13 +73,13 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
           [styles.favouritesContainer]: isFavourites || isCart,
           [styles.searchContainer]: isSearchBar,
         })}
-        onClick={onBookClick}
       >
         <div
           className={classNames(styles.rightContainer, {
             [styles.rightFavouritesContainer]: isFavourites || isCart,
             [styles.rightSearchContainer]: isSearchBar,
           })}
+          onClick={onBookClick}
         >
           <div
             style={{
@@ -120,6 +120,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             className={classNames(styles.textContainer, {
               [styles.favouritesTextContainer]: isFavourites || isCart,
             })}
+            onClick={onBookClick}
           >
             <div
               className={classNames(styles.title, {

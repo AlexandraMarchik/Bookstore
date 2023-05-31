@@ -79,7 +79,6 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             [styles.rightFavouritesContainer]: isFavourites || isCart,
             [styles.rightSearchContainer]: isSearchBar,
           })}
-          onClick={onBookClick}
         >
           <div
             style={{
@@ -89,6 +88,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
               [styles.imgFifth]: isFavourites || isCart,
               [styles.imgSearchFifth]: isSearchBar,
             })}
+
           >
             <img
               src={image}
@@ -96,6 +96,7 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
                 [styles.imgFavourites]: isFavourites || isCart,
                 [styles.imgSearch]: isSearchBar,
               })}
+              onClick={onBookClick}
             ></img>
             {isAuth && isMobile && isFavourites && (
               <div
@@ -120,13 +121,14 @@ const BookCard: FC<CardProps> = ({ card, form, className }) => {
             className={classNames(styles.textContainer, {
               [styles.favouritesTextContainer]: isFavourites || isCart,
             })}
-            onClick={onBookClick}
+
           >
             <div
               className={classNames(styles.title, {
                 [styles.favouritesTitle]: isFavourites || isCart,
                 [styles.searchTitle]: isSearchBar,
               })}
+              onClick={onBookClick}
             >
               {title.substring(0, 30).concat(" ...")}
             </div>

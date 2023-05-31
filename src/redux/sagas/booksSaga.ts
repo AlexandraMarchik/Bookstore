@@ -15,7 +15,7 @@ import {
   getSingleBook,
   setAllBooks,
   setBooksLoading,
-  setSearchBooks,
+  setSearchBooks, setSearchBooksLoading,
   setSingleBook,
 } from "src/redux/reducer/booksSlice";
 
@@ -49,7 +49,7 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
 function* getSearchedBooksWorker(
   action: PayloadAction<SearchPaginationResponse>
 ) {
-  yield put(setBooksLoading(true));
+  yield put(setSearchBooksLoading(true));
   const { page, query } = action.payload;
   const { ok, data, problem }: ApiResponse<SearchBooksResponse> = yield call(
     API.getSearchBooks,
@@ -63,7 +63,7 @@ function* getSearchedBooksWorker(
   } else {
     console.warn("Error getting all posts", problem);
   }
-  yield put(setBooksLoading(false));
+  yield put(setSearchBooksLoading(false));
 }
 
 export default function* booksSaga() {

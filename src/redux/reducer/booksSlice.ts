@@ -14,6 +14,7 @@ type InitialType = {
   singleBook: SingleBooksResponse | null;
   favouritesBooks: BookCartType[];
   isAllBooksLoading: boolean;
+  isSearchBooksLoading:boolean;
   isVisibleModal: boolean;
   previewBook: string | null;
   searchValue: string;
@@ -27,6 +28,7 @@ const initialState: InitialType = {
   singleBook: null,
   favouritesBooks: [],
   isAllBooksLoading: false,
+  isSearchBooksLoading:false,
   previewBook: null,
   isVisibleModal: false,
   searchValue: "",
@@ -63,6 +65,10 @@ const booksSlice = createSlice({
     setBooksLoading: (state, action: PayloadAction<boolean>) => {
       state.isAllBooksLoading = action.payload;
     },
+    setSearchBooksLoading: (state, action: PayloadAction<boolean>) => {
+      state.isSearchBooksLoading = action.payload;
+    },
+
     setPreviewBook: (state, action: PayloadAction<string | null>) => {
       state.previewBook = action.payload;
     },
@@ -92,11 +98,13 @@ export const {
   getSingleBook,
   setFavouritesBooks,
   setBooksLoading,
+    setSearchBooksLoading,
   setPreviewBookVisibility,
   setPreviewBook,
   getSearchBooks,
   setSearchedValueBooks,
   setSearchBooks,
+
 } = booksSlice.actions;
 
 export default booksSlice.reducer;
@@ -106,6 +114,7 @@ export const BooksSelectors = {
   getSingleBook: (state: RootState) => state.books.singleBook,
   getFavoritesBooks: (state: RootState) => state.books.favouritesBooks,
   getAllBooksLoading: (state: RootState) => state.books.isAllBooksLoading,
+  getSearchBooksLoading:(state: RootState) => state.books.isSearchBooksLoading,
   getVisibleModal: (state: RootState) => state.books.isVisibleModal,
   getPreviewBook: (state: RootState) => state.books.previewBook,
   getSearchedBooks: (state: RootState) => state.books.searchBooks,

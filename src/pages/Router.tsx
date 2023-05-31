@@ -26,7 +26,7 @@ export enum RoutesList {
   Cart = "/cart",
   Account = "/user",
   Reset = "/auth/reset",
-  NewPassword = "/auth/reset/new-password",
+  NewPassword = "/auth/new-password",
   Default = "*",
 }
 

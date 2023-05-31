@@ -26,7 +26,7 @@ const Search = () => {
 
   const searchValue = useSelector(BooksSelectors.getSearchValue);
   const cardList = useSelector(BooksSelectors.getSearchedBooks);
-  const isLoading = useSelector(BooksSelectors.getAllBooksLoading);
+  const isLoading = useSelector(BooksSelectors.getSearchBooksLoading);
   const postsCount = useSelector(BooksSelectors.getTotalCount);
   const pagesCount = Math.ceil(+postsCount / 10);
 

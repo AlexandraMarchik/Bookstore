@@ -1,0 +1,7 @@
+.button{
+  display: flex;
+  gap: 19px;
+  &:hover{
+    cursor: pointer;
+  }
+}

@@ -20,7 +20,7 @@ import {
   StarIcon,
   TwitterIcon,
 } from "src/assets/icon";
-import BooksSlider from "src/components/BooksSlider";
+import Slider from "src/components/Slider";
 import Button from "src/components/Button";
 import Tabs from "src/components/Tabs";
 import Subscribe from "src/components/Subscribe";
@@ -65,14 +65,12 @@ const BookDetails = () => {
   const favoritesIndex = favouritesList.findIndex(
     (books) => books.isbn13 === singleBook?.isbn13
   );
-  const isLoading = useSelector(BooksSelectors.getAllBooksLoading);
 
   const rating = singleBook?.rating;
 
   const [activeTab, setActiveTab] = useState(TabsNames.Description);
   const [showDetails, setShowDetails] = useState(false);
-  const [slideCount, setSlideCount] = useState(2);
-  const [currentSlide, setCurrentSlide] = useState(0);
+
 
   const onLikeIconClick = () => {
     if (singleBook) {
@@ -233,21 +231,7 @@ const BookDetails = () => {
           </div>
           <Subscribe />
           <div className={styles.carouselContainer}>
-            <CarouselProvider
-              visibleSlides={slideCount}
-              totalSlides={6}
-              step={1}
-              currentSlide={currentSlide}
-              naturalSlideWidth={100}
-              naturalSlideHeight={125}
-              isIntrinsicHeight={true}
-            >
-              <BooksSlider
-                title={"Similar Books"}
-                setSlideCount={setSlideCount}
-                setCurrentSlide={setCurrentSlide}
-              />
-            </CarouselProvider>
+            <Slider title={"Similar Books"} />
           </div>
         </div>
         <PreviewBookModal />

@@ -6,3 +6,12 @@
     flex-direction: column;
   }
 }
+.carouselContainer {
+  @media screen and (max-width: 768px) {
+    width: 687px;
+  }
+  @media screen and (max-width: 479px) {
+    width: 296px;
+  }
+}
+
